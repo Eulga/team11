@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <title>Hello 11/info</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+        * {
+            font-family: 'Nanum Pen Script', cursive;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .intro-container {
+            background-color: #fff3ed;
+            position: relative;
+            margin: 20px auto 20px auto;
+            padding: 20px 20px 20px 20px;
+            width: 500px;
+            height: 800px;
+            padding: 40px;
+            border: 5px solid #ff9f4c;
+            box-shadow: 0 0 5px rgba(255, 142, 56, 0.2);
+            font-size: 30px;
+            color: rgb(227, 117, 6);
+            margin-top: 20px;
+            border-radius: 50px;
+        }
+
+        .intro-image {
+            width: 100%;
+            height: auto;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            border: 5px solid #ff9f4c;
+        }
+
+        .intro-details {
+            margin-bottom: 10px;
+        }
+
+        .intro-details p {
+            margin: 5px 0;
+        }
+
+        .intro-close {
+            font-size: 50px;
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        .intro-close:hover {
+            color: rgb(255, 252, 252);
+            font-size: 50px;
+        }
+
+        .blog_link {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-top: 20px;
+            background-color: #ff9f4c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.0.5);
+        }
+
+        .blog_link:hover {
+            background-color: #ffaf81;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="intro-container">
+        <img class="intro-image"
+            src="https://t1.daumcdn.net/cfile/tistory/998CFD3D5ACEC1A50A"
+            alt="Your Photo">
+        <div class="intro-details">
+            <p>Name: Your Name</p>
+            <p>MBTI: Your MBTI Type</p>
+            <p>Hobby: Your Hobby</p><p>intro: Hello world !</p>
+            <a class="blog_link" href="https://yourblog.com">개발 블로그</a></p>
+        </div>
+        <span class="intro-close" onclick="closeIntro()">X</span>
+    </div>
+
+    <script>
+        function closeIntro() {
+            window.close(); 
+        }
+       
+    </script>
+</body>

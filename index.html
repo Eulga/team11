@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <title>Hello 11</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+        * {
+            font-family: 'Nanum Pen Script', cursive;
+        }
+
+        .door {
+            height: 300px;
+            width: auto;
+            margin: 20px auto 20px auto;
+            border-radius: 50px;
+            margin-top: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image {
+            border: 5px solid #ff9f4c;
+            box-shadow: 0 0 5px rgba(255, 187, 134, 0.2);
+            border-radius: 50px;
+            margin-top: 150px
+        }
+
+        .image2 {
+            border: 5px solid #ffcfa5;
+            box-shadow: 0 0 5px rgba(255, 187, 134, 0.2);
+            border-radius: 50px;
+            margin-top: 10px;
+        }
+
+        .door>button {
+            width: 150px;
+            height: 100px;
+            background-color: transparent;
+            border: 3px solid rgb(255, 179, 124);
+            color: orange;
+            border-radius: 50px;
+            margin-top: 10px;
+            font-size: 30px;
+        }
+
+        .door>button:hover {
+            font-size: 50px;
+            border: 15px solid white;
+        }
+
+        .gather {
+            width: 300px;
+            height: 200px;
+            background-color: #ff9f4c;
+            border-radius: 20px;
+            border: 3px solid rgb(255, 179, 124);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gather:hover {
+            border: 3px solid rgb(255, 179, 124);
+            background-color: #ffcfa6;
+        }
+
+        .gather-text {
+
+            font-size: 24px;
+            color: white;
+        }
+    </style>
+
+    <script>
+        function enter() {      // 카드 사이즈 url 오픈
+
+
+            var features = "width=600,height=950,top=0,left=50";
+
+
+            window.open("http://127.0.0.1:5500/index3.html", "Child", features);
+        }
+
+        function exit() {
+            window.close();
+        }
+
+        function playGather() {
+            alert("Let's play the Coding!");
+            window.open("https://app.gather.town/app/jnYbo3ToCrDXqjbh/innovation_camp_dongbuk2");
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <div class="door">
+            <!-- 대문 이미지 -->
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbDM4Lh%2FbtsiOKznm2t%2Fry7hmah1aWbP1AV0n9wPMK%2Fimg.png"
+                width="500" height="500" class="image" alt="11조" />
+
+            <!-- ENTER 버튼 -->
+            <button onclick="enter()">ENTER</button>
+
+            <!-- EXIT 버튼 -->
+            <button onclick="exit()">EXIT</button>
+
+            <!-- 게더 이미지 -->
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FniMzj%2Fbtsi11sCml9%2FCM3sFK6AoFASCLzbrzpQfK%2Fimg.png"
+                width="500" height="500" class="image2" alt="11조" />
+
+            <!-- 음악 버튼 -->
+            <div class="gather" onclick="playGather()">
+                <span class="gather-text">Click to Play Gather!</span>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
