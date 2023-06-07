@@ -1,10 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+    ></script>
+    <style>
+        * {
+            font-family: "Gowun Dodum", sans-serif;
+        }
+
+        .mypic {
+            width: 100%;
+            height: 200px;
+
+            background-image: linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.5)
+            ),
+            url("https://images.unsplash.com/photo-1601024445121-e5b82f020549?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80");
+            background-position: center;
+            background-size: cover;
+
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mypic > h1 {
+            font-size: 30px;
+        }
+
+        .mybox {
+            width: 95%;
+            max-width: 700px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px lightblue;
+            margin: 20px auto;
+        }
+
+        .mybucket {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mybucket > input {
+            width: 70%;
+        }
+
+        .mybox > li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 10px;
+            min-height: 48px;
+        }
+
+        .mybox > li > h2 {
+            max-width: 75%;
+            font-size: 20px;
+            font-weight: 500;
+            margin-right: auto;
+            margin-bottom: 0px;
+        }
+
+        .mybox > li > h2.done {
+            text-decoration: line-through;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            show_guestbook();
+        });
+
+        function show_guestbook() {
+            $('#test-section').empty()
+            fetch("/guestbook_read")
+                .then((res) => res.json())
+                .then((response) => {
+                    let rows = response['response']
+                    rows.forEach((a) => {
+                        let name = a['name']
+                        let guestbook = a['guestbook']
+                        let own_uuid = a['uuid']
+
+                        let temp_html = `
+                                        <div id="${own_uuid}">
+                                            <p>${name}</p>
+                                            <p class="guestbook">${guestbook}</p>
+                                            <div id="edit-guestbook-${own_uuid}" style="display: none">
+                                                <input id="edit-guestbook-text-${own_uuid}" type="text" />
+                                                <button onclick="modify_guestbook('${own_uuid}')" type="button" class="btn btn-primary">저장</button>
+                                                <button onclick="cancel_edit('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
+                                            </div>
+                                            <button onclick="edit_guestbook('${own_uuid}')" type="button" class="btn btn-primary">수정</button>
+                                            <button onclick="delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">삭제</button>
+                                        </div>
+                                        `
+                        $('#test-section').prepend(temp_html)
+                    })
+                });
+        }
+        function edit_guestbook(own_uuid) {
+            let guestbook = $(`#${own_uuid} > p.guestbook`)
+
+            guestbook.hide()
+            $(`#edit-guestbook-${own_uuid}`).show();
+            $(`#edit-guestbook-text-${own_uuid}`).val(guestbook.text());
+        }
+
+        function cancel_edit(own_uuid) {
+            $(`#edit-guestbook-${own_uuid}`).hide();
+            $(`#${own_uuid} > p.guestbook`).show();
+        }
+
+        function save_guestbook() {
+            let name = $('#name').val()
+            let guestbook = $('#guestbook').val()
+
+            let formData = new FormData();
+            formData.append("name_give", name)
+            formData.append("guestbook_give", guestbook)
+
+
+            fetch("/guestbook_save", {method: "POST", body: formData,})
+                .then((res) => res.json())
+                .then((response) => {
+                    let row = response['response']
+                    let name = row['name']
+                    let guestbook = row['guestbook']
+                    let own_uuid = row['uuid']
+
+                    let temp_html = `
+                                        <div id="${own_uuid}">
+                                            <p>${name}</p>
+                                            <p class="guestbook">${guestbook}</p>
+                                            <div id="edit-guestbook-${own_uuid}" style="display: none">
+                                                <input id="edit-guestbook-text-${own_uuid}" type="text" />
+                                                <button onclick="modify_guestbook('${own_uuid}')" type="button" class="btn btn-primary">저장</button>
+                                                <button onclick="cancel_edit('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
+                                            </div>
+                                            <button onclick="edit_guestbook('${own_uuid}', '${guestbook}')" type="button" class="btn btn-primary">수정</button>
+                                            <button onclick="delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">삭제</button>
+                                        </div>
+                    `
+                    $('#test-section').prepend(temp_html)
+                });
+
+        }
+
+        function modify_guestbook(own_uuid) {
+            let new_guestbook = $(`#edit-guestbook-text-${own_uuid}`).val()
+
+            let formData = new FormData();
+            formData.append("new_guestbook_give", new_guestbook)
+            formData.append("uuid_give", own_uuid)
+
+            fetch("/guestbook_modify", {method: "POST", body: formData,})
+                .then((res) => res.json())
+                .then((response) => {
+                    let row = response['response']
+                    $(`#edit-guestbook-${own_uuid}`).hide();
+                    $(`#${own_uuid} > p.guestbook`).text(row['guestbook']).show();
+                });
+        }
+
+        function delete_guestbook(own_uuid) {
+            console.log(own_uuid)
+
+            let formData = new FormData();
+            formData.append("uuid_give", own_uuid)
+
+            fetch("/guestbook_delete", {method: "POST", body: formData,})
+                .then(res => res.json())
+                .then((response) => {
+                    console.log(response['msg'])
+                    $(`#${own_uuid}`).remove()
+                });
+        }
+
+        function test1() {
+            fetch("/test").then(res=>res.json()).then(response=>{
+                console.log(response)
+            })
+        }
+
+    </script>
 </head>
 <body>
-$END$
+    <div class="mybox">
+        <div class="mybucket">
+            <input id="name" class="form-control" type="text" placeholder="이름 입력"/>
+            <br>
+            <input id="guestbook" class="form-control" type="text" placeholder="방명록 입력"/>
+            <button onclick="save_guestbook()" type="button" class="btn btn-outline-primary">기록</button>
+        </div>
+    </div>
+    <div class="mybox" id="test-section">
+
+    </div>
 </body>
 </html>
