@@ -148,10 +148,11 @@
     </style>
 
     <script>
+         
         function modal1(col1) {
             var modalOverlay = document.getElementById('col1-overlay');
-            modalOverlay.style.display = 'block';
-        }
+            modalOverlay.style.display = 'block';  
+        }   /* 각 번호로 카드 호출 */
         function modal2(col2) {
             var modalOverlay = document.getElementById('col2-overlay');
             modalOverlay.style.display = 'block';
@@ -171,7 +172,7 @@
         function closeIntro1(col1) {
             var modalOverlay = document.getElementById('col1-overlay');
             modalOverlay.style.display = 'none';
-        }
+        }  /* 각 번호로 카드 호출 */
         function closeIntro2(col2) {
             var modalOverlay = document.getElementById('col2-overlay');
             modalOverlay.style.display = 'none';
@@ -284,11 +285,12 @@
     <!--모달 창 코드 -->
     <div>
         <div class="door">
-            <!-- 대문 이미지 -->
-            <img onclick="modal5('col5')"
+            <!-- 대문 이미지 -->  
+            <!-- 각번호로 호출가능 modal1('col1'), modal2('col2') -->
+            <img onclick="modal5('col5')"    
                 src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbDM4Lh%2FbtsiOKznm2t%2Fry7hmah1aWbP1AV0n9wPMK%2Fimg.png"
                 width="500" height="500" class="image" alt="11조" />
-
+              
             <!-- ENTER 버튼 -->
             <button onclick="enter()">ENTER</button>
 
