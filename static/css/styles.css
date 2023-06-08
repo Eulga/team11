@@ -2961,7 +2961,7 @@ textarea.form-control-lg {
   --bs-btn-border-color: #ffc800;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #ffc800;
-  --bs-btn-hover-border-color: #ffc800;
+  --bs-btn-hover-border: 8px solid #d85b13;
   --bs-btn-focus-shadow-rgb: 255, 200, 0;
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: #ffc800;
@@ -2971,6 +2971,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: #ffc800;
   --bs-gradient: none;
+  
 }
 
 .btn-outline-secondary {
@@ -2988,6 +2989,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: #6c757d;
   --bs-gradient: none;
+  
 }
 
 .btn-outline-success {
@@ -11291,6 +11293,10 @@ section#contact form#contactForm :-ms-input-placeholder {
   padding: 20px;
   box-shadow: 0px 0px 10px 0px lightblue;
   margin: 20px auto;
+  border-radius: 80px;
+  border-color: orange;
+  border: 8px solid orange;
+  
 }
 
 .mybucket {
@@ -11298,12 +11304,11 @@ section#contact form#contactForm :-ms-input-placeholder {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   width: 95%;
   max-width: 1000px;
   padding: 20px;
-  box-shadow: 0px 0px 10px 0px lightblue;
   margin: 20px auto;
+  border-radius: 50px;
 }
 
 .mybucket>input {
@@ -11312,6 +11317,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   padding: 20px;
   box-shadow: 0px 0px 10px 0px lightblue;
   margin: 20px auto;
+  border: 8px solid orange;
 }
 .information>input {
   
