@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet" />
+
+    <title>sihwan 소개 및 목표</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+        * {
+            font-family: 'Nanum Pen Script', cursive;
+        }
+        .all-container {
+            margin: 100px 20px 20px 200px;
+            padding: 20px 20px 20px 20px;
+        }
+        .intro-container {
+            background-color: #FFF3ED;
+            position: relative;
+            width: 500px;
+            height: 800px;
+            padding: 40px;
+            border: 5px solid #FF9F4C;
+            box-shadow: 0 0 5px rgba(255, 142, 56, 0.2);
+            font-size: 32px;
+            color: black;
+            border-radius: 50px;
+            overflow: auto;
+            word-break: keep-all;
+            float:left;
+        }
+        .intro-container::-webkit-scrollbar {
+            width: 10px;
+        }
+        .intro-container::-webkit-scrollbar-thumb {
+            display: none;
+        }
+        .intro-image {
+            width: 100%;
+            height: auto;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            border: 5px solid #FF9F4C;
+        }
+        .intro-details {
+            margin-bottom: 10px;
+        }
+        .intro-details p {
+            margin: 5px 0;
+        }
+        .blog-link {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-top: 20px;
+            background-color: #FF9F4C;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.0.5);
+        }
+        .blog-link:hover {
+            background-color: #FFAF81;
+        }
+        .mypic {
+            width: 100%;
+            height: 200px;
+
+            background-image: linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.5)),
+                url("https://images.unsplash.com/photo-1601024445121-e5b82f020549?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80");
+            background-position: center;
+            background-size: cover;
+
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .mypic>h1 {
+            font-size: 30px;
+        }
+        .mybox {
+            width: 100%;
+            max-width: 1000px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px lightblue;
+            margin: 20px;
+            font-size: 32px;
+            display: inline-block;
+        }
+        .mybucket {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .mybucket>input {
+            width: 800px;
+            height: 50px;
+            font-size: 25px;
+            text-align: center;
+        }
+        .mybucket>button {
+            width: 80px;
+            height: 50px;
+            font-size: 25px;
+        }
+        .mybox>li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            min-height: 48px;
+        }
+        .mybox>li>h2 {
+            max-width: 75%;
+            font-size: 20px;
+            font-weight: 500;
+            margin-right: auto;
+            margin-bottom: 0px;
+        }
+        .mybox>li>h2.done {
+            opacity: 0.4;
+        }
+        .donebutton {
+            width: 50px;
+            height: 35px;
+            font-size: 20px;
+            background-color:transparent;
+            border-radius: 3px;
+            border-color: blue;
+            border-width: thin;
+        }
+        .resetbutton {
+            width: 50px;
+            height: 35px;
+            font-size: 20px;
+            background-color:transparent;
+            border-radius: 3px;
+            border-color: orange;
+            border-width: thin;
+            margin-right: 10px;
+        }
+        .donebutton:hover {
+            background-color: #1e90ff;
+        }
+        .resetbutton:hover {
+            background-color: #ff6347;
+        }
+        .deletebutton:hover {
+            background-color: #b22222;
+        }
+        .deletebutton {
+            width: 50px;
+            height: 35px;
+            font-size: 20px;
+            background-color:transparent;
+            border-radius: 3px;
+            border-color: red;
+            border-width: thin;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            show_bucket();
+        });
+        function show_bucket() {
+            fetch('/sihwan/bucket').then(res => res.json()).then(data => {
+                let rows = data['result']
+                $('#bucket-list').empty()
+
+                rows.forEach((a) => {
+                    let bucket = a['bucket']
+                    let num = a['num']
+                    let done = a['done']
+
+                    let temp_html = ``
+                    if (done == 0) {
+                        temp_html = `<li>
+                                        <h2>□ ${bucket}</h2>
+                                        <button onclick="done_bucket(${num})" class="donebutton" type="button" class="btn btn-outline-primary">완료</button>
+                                    </li>`
+                    } else {
+                        temp_html = `<li>
+                                        <h2 class="done">☑ ${bucket}</h2>
+                                        <button onclick="reset_bucket(${num})" class="resetbutton" type="button" class="btn btn-outline-danger">취소</button>
+                                        <button onclick="delete_bucket(${num})" class="deletebutton" type="button" class="btn btn-outline-danger">삭제</button>
+                                    </li>`
+                    }
+                    $('#bucket-list').append(temp_html)
+                })
+            })
+        }
+
+        // 오늘의 목표 추가 버튼
+        function save_bucket() {
+            let bucket = $('#bucket').val();
+
+            let formData = new FormData();
+            formData.append("bucket_give", bucket);
+
+            fetch('/sihwan/bucket', { method: "POST", body: formData, }).then((response) => response.json()).then((data) => {
+                alert(data["msg"])
+                window.location.reload()
+            });
+        }
+
+        // 완료 버튼
+        function done_bucket(num) {
+
+            let formData = new FormData();
+            formData.append("num_give", num);
+
+            fetch('/sihwan/bucket/done', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
+                alert(data["msg"])
+                window.location.reload()
+            });
+        }
+
+        // 취소 버튼
+        function reset_bucket(num) {
+
+            let formData = new FormData();
+            formData.append("num_give", num);
+
+            fetch('/sihwan/bucket/reset', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
+                alert(data["msg"])
+                window.location.reload()
+            });
+        }
+
+        // 삭제 버튼
+        function delete_bucket(num) {
+
+            let formData = new FormData();
+            formData.append("delete_give", num);
+
+            fetch('/sihwan/bucket/delete', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
+                alert(data["msg"])
+                window.location.reload()
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="all-container">
+        <div class="intro-container">
+            <img class="intro-image"
+                src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FniMzj%2Fbtsi11sCml9%2FCM3sFK6AoFASCLzbrzpQfK%2Fimg.png"
+                alt="Your Photo">
+            <div class="intro-details">
+                <p>이름: 유시환</p>
+                <p>MBTI: ISTP</p>
+                <p>취미: 게임, 축구</p>
+                <p>자기 소개: 심리학을 전공했지만 사람마음 알다가도 모르겠어서 다른 길을 찾고있습니다. 레데리라는 게임을 하다가 프로그래밍이라는 것에 궁금증이 생겨 개발 공부를 시작하게 됐습니다. 아직 모르는 것이 많지만 열심히 공부해보겠습니다.</p>
+                <a class="blog-link" href="https://goonerd.tistory.com/">개발 블로그</a></p>
+            </div>
+        </div>
+        <div class="mybox">
+            <div class="mybucket">
+                <input id="bucket" class="form-control" type="text" placeholder="오늘의 목표" />
+                <button onclick="save_bucket()" type="button" class="btn btn-outline-warning">추가</button>
+            </div>
+        </div>
+        <div class="mybox" id="bucket-list">
+        </div>
+    </div>
+    <script>
+        function closeIntro() {
+            var introContainer = document.querySelector('.intro-container');
+            introContainer.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
