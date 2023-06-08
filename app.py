@@ -20,7 +20,7 @@ import tools
 
 @app.route('/')
 def home():
-    return render_template('indexHome.html')
+    return render_template('index.html')
 
 @app.route('/main')
 def gomain():
