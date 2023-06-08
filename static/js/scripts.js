@@ -206,3 +206,44 @@ function test1() {
         console.log(response)
     })
 }
+
+function modal1(col1) {
+    var modalOverlay = document.getElementById('col1-overlay');
+    modalOverlay.style.display = 'block';
+}
+function modal2(col2) {
+    var modalOverlay = document.getElementById('col2-overlay');
+    modalOverlay.style.display = 'block';
+}
+function modal3(col3) {
+    var modalOverlay = document.getElementById('col3-overlay');
+    modalOverlay.style.display = 'block';
+}
+function modal4(col4) {
+    var modalOverlay = document.getElementById('col4-overlay');
+    modalOverlay.style.display = 'block';
+}
+function modal5(col5) {
+    var modalOverlay = document.getElementById('col5-overlay');
+    modalOverlay.style.display = 'block';
+}
+function closeIntro1() {
+    var modalOverlay = document.getElementById('col1-overlay');
+    modalOverlay.style.display = 'none';
+}
+function closeIntro2() {
+    var modalOverlay = document.getElementById('col2-overlay');
+    modalOverlay.style.display = 'none';
+}
+function closeIntro3() {
+    var modalOverlay = document.getElementById('col3-overlay');
+    modalOverlay.style.display = 'none';
+}
+function closeIntro4() {
+    var modalOverlay = document.getElementById('col4-overlay');
+    modalOverlay.style.display = 'none'
+}
+function closeIntro5() {
+    var modalOverlay = document.getElementById('col5-overlay');
+    modalOverlay.style.display = 'none';
+}

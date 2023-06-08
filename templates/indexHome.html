@@ -63,13 +63,6 @@
             font-size: 50px;
             border: 15px solid white;
         }
-        .mainEnter{
-             color: orange;
-             }
-        .mainEnter:hover {
-            font-size: 50px;
-            border: 15px solid white;
-        }
 
         .modal-overlay {
             display: none;
@@ -179,6 +172,9 @@
             modalOverlay.style.display = 'block';
         }
 
+        function enter() {
+            window.open("http://127.0.0.1:5500/templates/indexmain.html");
+        }
 
         function exit() {
             window.close();
@@ -564,6 +560,9 @@
                 <span class="intro-close" onclick="closeIntro1()">X</span>
 
             </div>
+
+            <div class="mybox" id="bucket-list">
+            </div>
         </div>
     </div>
 
@@ -581,7 +580,7 @@
                 width="500" height="500" class="image" alt="11조" />
 
             <!-- ENTER 버튼 -->
-            <button><a class= "mainEnter" href= '/main' style="text-decoration:none ;">ENTER</a></button>
+            <button onclick="enter()">ENTER</button>
 
             <!-- EXIT 버튼 -->
             <button onclick="exit()">EXIT</button>

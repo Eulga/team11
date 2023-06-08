@@ -27,6 +27,8 @@ def gomain():
     return render_template('indexmain.html')
 
 
+
+
 # 자기소개 텍스트 정보 불러오기
 @app.route('/introductionData')
 def introductionData():
@@ -353,4 +355,4 @@ def myeonghyeon_delete_post():
     return jsonify({'result': 'success','msg':'삭제 완료!'})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=5001, debug=True)
