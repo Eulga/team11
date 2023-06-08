@@ -74,16 +74,104 @@
             font-size: 24px;
             color: white;
         }
+
+        /* .modal-overlay {     
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }  
+
+        .modal-content {
+            width: 300px;
+            height: 200px;
+            background-color: white;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .intro-container {
+            background-color: #fff3ed;
+            position: relative;
+            margin: 20px auto 20px auto;
+            padding: 20px 20px 20px 20px;
+            width: 500px;
+            height: 800px;
+            padding: 40px;
+            border: 5px solid #ff9f4c;
+            box-shadow: 0 0 5px rgba(255, 142, 56, 0.2);
+            font-size: 30px;
+            color: rgb(227, 117, 6);
+            margin-top: 20px;
+            border-radius: 50px;
+        }
+
+        .intro-image {
+            width: 100%;
+            height: auto;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            border: 5px solid #ff9f4c;
+        }
+
+        .intro-details {
+            margin-bottom: 10px;
+        }
+
+        .intro-details p {
+            margin: 5px 0;
+        }
+
+        .intro-close {
+            font-size: 50px;
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        .intro-close:hover {
+            color: rgb(255, 252, 252);
+            font-size: 50px;
+        }
+
+        .blog_link {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-top: 20px;
+            background-color: #ff9f4c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.0.5);
+        }
+
+        .blog_link:hover {
+            background-color: #ffaf81;
+        } */
     </style>
 
     <script>
-        function enter() {      // 카드 사이즈 url 오픈
-
-
-            var features = "width=600,height=950,top=0,left=50";
-
-
-            window.open("http://127.0.0.1:5500/templates/index3.html", "Child", features);
+        // function enter() {
+        //     var modalOverlay = document.getElementById('modal-overlay');
+        //     modalOverlay.style.display = 'block';
+        // }
+        // function closeIntro() {
+        //     var modalOverlay = document.getElementById('modal-overlay');
+        //     modalOverlay.style.display = 'none';
+        // } <!--모달 창 코드 -->
+        function enter() {
+            window.open("다음 페이지");
         }
 
         function exit() {
@@ -101,6 +189,20 @@
 </head>
 
 <body>
+    <!-- <div id="modal-overlay" class="modal-overlay">
+        <div class="intro-container">
+            <img class="intro-image" src="https://t1.daumcdn.net/cfile/tistory/998CFD3D5ACEC1A50A" alt="Your Photo">
+            <div class="intro-details">
+                <p>Name: Your Name</p>
+                <p>MBTI: Your MBTI Type</p>
+                <p>Hobby: Your Hobby</p>
+                <p>intro: Hello world !</p>
+                <a class="blog_link" href="https://yourblog.com">개발 블로그</a></p>
+            </div>
+            <span class="intro-close" onclick="closeIntro()">X</span>
+        </div>
+    </div>
+    </div> --> <!--모달 창 코드 -->
     <div>
         <div class="door">
             <!-- 대문 이미지 -->
@@ -117,7 +219,7 @@
             <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FniMzj%2Fbtsi11sCml9%2FCM3sFK6AoFASCLzbrzpQfK%2Fimg.png"
                 width="500" height="500" class="image2" alt="11조" />
 
-            <!-- 음악 버튼 -->
+            <!-- 게더 버튼 -->
             <div class="gather" onclick="playGather()">
                 <span class="gather-text">Click to Play Gather!</span>
 
