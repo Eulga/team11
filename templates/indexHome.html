@@ -121,8 +121,8 @@
             color:#ff9f4c;
             font-size: 50px;
             position: absolute;
-            top: 50px;
-            right: 450px;
+            top: 20px;
+            right: 10px;
             cursor: pointer;
         }
 
@@ -316,7 +316,7 @@
             show_bucket();
         });
         function show_bucket() {
-            fetch('/gwanggyun/bucket').then(res => res.json()).then(data => {
+            fetch('/indexHome/bucket').then(res => res.json()).then(data => {
                 let rows = data['result']
                 $('#bucket-list').empty()
 
@@ -399,12 +399,14 @@
 <body>
     <div id="col1-overlay" class="modal-overlay">
         <div id="col1" class="intro-container">
+            
             <img class="intro-image"
                 src="https://velog.velcdn.com/images/heelieben/post/675309bf-a0a3-4443-8ced-8a55ce40ce08/image.png"
                 alt="Your Photo">
                 <p> @@@///11조 개발자가 될수있다 !! 아자아자 !!///@@@</p>
             <div class="intro-details">
                 <div class="mybox">
+                    <span class="intro-close" onclick="closeIntro1()">X</span>
                     <div class="mybucket">
                         <input id="bucket" class="form-control" type="text" placeholder="11조의 목표 !!" />
                         <button onclick="save_bucket()" type="button" class="btn btn-outline-warning">가능?</button>
@@ -414,9 +416,9 @@
                 </div>
             </div>
         </div>
-        <span class="intro-close" onclick="closeIntro1()">X</span>
+        
     </div>
-    </div>
+
     <!-- <div id="col2-overlay" class="modal-overlay">
         <div id="col2" class="intro-container">
             <img class="intro-image" src="https://t1.daumcdn.net/cfile/tistory/998CFD3D5ACEC1A50A" alt="Your Photo">
