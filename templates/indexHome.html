@@ -118,7 +118,7 @@
         }
 
         .intro-close {
-            color:#ff9f4c;
+            color: #ff9f4c;
             font-size: 50px;
             position: absolute;
             top: 20px;
@@ -131,129 +131,34 @@
             font-size: 50px;
         }
 
-        /* .blog_link {
-            display: inline-block;
+        .game-button {
+            font-size: 15px;
+            border-color: #ffffff;
             padding: 8px 16px;
-            margin-top: 20px;
+            margin-top: 10px;
             background-color: #ff9f4c;
             color: #fff;
             text-decoration: none;
             border-radius: 20px;
-            transition: background-color 0.3s;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.0.5);
         }
 
-        .blog_link:hover {
+        .game-button:hover {
             background-color: #ffaf81;
-        } */
-
-
-        .mybox {
-            width: 70%;
-            max-width: 500px;
-            padding: 20px;
-            box-shadow: 0px 0px 10px 0px  #ff9f4c;
-            color: transparent;
-            margin: 20px;
-            font-size: 32px;
-            display: inline-block;
         }
 
-        .mybucket {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
+        .game-button2 {
+            font-size: 15px;
+            border-color: #ffffff;
+            padding: 8px 16px;
+            margin-top: 10px;
+            background-color: #ff9f4c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
         }
 
-        .mybucket>input {
-            width: 800px;
-            height: 50px;
-            font-size: 25px;
-            margin-right: 30px;
-            text-align: center;
-            border: 3px solid rgb(255, 179, 124);
-            color: rgb(0, 0, 0);
-            border-radius: 10px;
-        }
-
-        .mybucket>button {
-            width: 150px;
-            height: 50px;
-            font-size: 25px;
-            background-color: transparent;
-            border: 3px solid rgb(255, 179, 124);
-            color: rgb(0, 0, 0);
-            border-radius: 50px;
-            
-        }
-        .mybucket>button:hover {
-            border: 5px solid rgb(255, 179, 124);
-
-        }
-
-        .mybox>li {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-            min-height: 48px;
-        }
-
-        .mybox>li>h2 {
-            max-width: 75%;
-            font-size: 20px;
-            font-weight: 500;
-            margin-right: auto;
-            margin-bottom: 0px;
-        }
-
-        .mybox>li>h2.done {
-            opacity: 0.4;
-        }
-
-        .donebutton {
-            width: 50px;
-            height: 50px;
-            font-size: 20px;
-            background-color: transparent;
-            border-radius: 3px;
-            border-color: orange;
-            border-width: thin;
-        }
-
-        .resetbutton {
-            width: 50px;
-            height: 35px;
-            font-size: 20px;
-            background-color: transparent;
-            border-radius: 3px;
-            border-color: orange;
-            border-width: thin;
-            margin-right: 10px;
-        }
-
-        .donebutton:hover {
-            background-color: #ffffff;
-        }
-
-        .resetbutton:hover {
-            background-color: #ff6347;
-        }
-
-        .deletebutton:hover {
-            background-color: #b22222;
-        }
-
-        .deletebutton {
-            width: 50px;
-            height: 35px;
-            font-size: 20px;
-            background-color: transparent;
-            border-radius: 3px;
-            border-color: red;
-            border-width: thin;
+        .game-button2:hover {
+            background-color: #ffaf81;
         }
     </style>
 
@@ -262,43 +167,7 @@
         function modal1(col1) {
             var modalOverlay = document.getElementById('col1-overlay');
             modalOverlay.style.display = 'block';
-        }   /* 각 번호로 카드 호출 */
-        // function modal2(col2) {
-        //     var modalOverlay = document.getElementById('col2-overlay');
-        //     modalOverlay.style.display = 'block';
-        // }
-        // function modal3(col3) {
-        //     var modalOverlay = document.getElementById('col3-overlay');
-        //     modalOverlay.style.display = 'block';
-        // }
-        // function modal4(col4) {
-        //     var modalOverlay = document.getElementById('col4-overlay');
-        //     modalOverlay.style.display = 'block';
-        // }
-        // function modal5(col5) {
-        //     var modalOverlay = document.getElementById('col5-overlay');
-        //     modalOverlay.style.display = 'block';
-        // }
-        function closeIntro1(col1) {
-            var modalOverlay = document.getElementById('col1-overlay');
-            modalOverlay.style.display = 'none';
-        }  /* 각 번호로 카드 호출 */
-        // function closeIntro2(col2) {
-        //     var modalOverlay = document.getElementById('col2-overlay');
-        //     modalOverlay.style.display = 'none';
-        // }
-        // function closeIntro3(col3) {
-        //     var modalOverlay = document.getElementById('col3-overlay');
-        //     modalOverlay.style.display = 'none';
-        // }
-        // function closeIntro4(col4) {
-        //     var modalOverlay = document.getElementById('col4-overlay');
-        //     modalOverlay.style.display = 'none';
-        // }
-        // function closeIntro5(col5) {
-        //     var modalOverlay = document.getElementById('col5-overlay');
-        //     modalOverlay.style.display = 'none';
-        // }
+        }
 
         function enter() {
             window.open("다음 페이지");
@@ -312,171 +181,387 @@
             alert("Let's play the Coding!");
             window.open("https://app.gather.town/app/jnYbo3ToCrDXqjbh/innovation_camp_dongbuk2");
         }
-        $(document).ready(function () {
-            show_bucket();
-        });
-        function show_bucket() {
-            fetch('/indexHome/bucket').then(res => res.json()).then(data => {
-                let rows = data['result']
-                $('#bucket-list').empty()
 
-                rows.forEach((a) => {
-                    let bucket = a['bucket']
-                    let num = a['num']
-                    let done = a['done']
+        var canvas; var ctx; var worm; var apple; var gameLoop;
 
-                    let temp_html = ``
-                    if (done == 0) {
-                        temp_html = `<li>
-                                        <h2>□ ${bucket}</h2>
-                                        <button onclick="done_bucket(${num})" class="donebutton" type="button" class="btn btn-outline-primary">완료</button>
-                                    </li>`
-                    } else {
-                        temp_html = `<li>
-                                        <h2 class="done">☑ ${bucket}</h2>
-                                        <button onclick="reset_bucket(${num})" class="resetbutton" type="button" class="btn btn-outline-danger">취소</button>
-                                        <button onclick="delete_bucket(${num})" class="deletebutton" type="button" class="btn btn-outline-danger">삭제</button>
-                                    </li>`
+
+        function closeIntro1() {
+            var modalOverlay = document.getElementById('col1-overlay');
+            modalOverlay.style.display = 'none';
+
+            // Stop the game
+            stopGame();
+        }
+
+        function startGame() {
+            canvas = document.createElement("canvas");
+            canvas.width = 500;
+            canvas.height = 330;
+            ctx = canvas.getContext("2d");
+            document.getElementById("col1").appendChild(canvas);
+
+            worm = new Worm();
+            apple = new Apple();
+
+            gameLoop = setInterval(updateGame, 1000 / 10); // 프레임
+        }
+
+        function stopGame() {
+            clearInterval(gameLoop);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById("col1").removeChild(canvas);
+        }
+
+        function updateGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            worm.update();
+            apple.draw();
+
+            if (worm.eat(apple)) {
+                apple.randomize();
+            }
+
+            worm.draw();
+
+            if (worm.checkCollision()) {
+                stopGame();
+                alert("Game Over!");
+            }
+        }
+
+        function Worm() {
+            this.x = 0;
+            this.y = 0;
+            this.size = 20;
+            this.speed = 20;
+            this.direction = "right";
+            this.tail = [];
+
+            this.draw = function () {
+                ctx.fillStyle = "green";
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+
+                for (var i = 0; i < this.tail.length; i++) {
+                    ctx.fillRect(this.tail[i].x, this.tail[i].y, this.size, this.size);
+                }
+            }
+
+            this.update = function () {
+                for (var i = this.tail.length - 1; i > 0; i--) {
+                    this.tail[i] = this.tail[i - 1];
+                }
+
+                if (this.tail.length > 0) {
+                    this.tail[0] = { x: this.x, y: this.y };
+                }
+
+                switch (this.direction) {
+                    case "up":
+                        this.y -= this.speed;
+                        break;
+                    case "down":
+                        this.y += this.speed;
+                        break;
+                    case "left":
+                        this.x -= this.speed;
+                        break;
+                    case "right":
+                        this.x += this.speed;
+                        break;
+                }
+
+            }
+
+            this.eat = function (apple) {
+                if (this.x === apple.x && this.y === apple.y) {
+                    this.tail.push({});
+                    return true;
+                }
+                return false;
+            }
+
+            this.checkCollision = function () {
+                if (this.x < 0 || this.x >= canvas.width || this.y < 0 || this.y >= canvas.height) {
+                    return true;
+                }
+
+                for (var i = 0; i < this.tail.length; i++) {
+                    if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
+                        return true;
                     }
-                    $('#bucket-list').append(temp_html)
-                })
-            })
+                }
+
+                return false;
+            }
         }
 
-        // 오늘의 목표 추가 버튼
-        function save_bucket() {
-            let bucket = $('#bucket').val();
+        function Apple() {
+            this.x = Math.floor(Math.random() * (canvas.width / 20)) * 20;
+            this.y = Math.floor(Math.random() * (canvas.height / 20)) * 20;
+            this.size = 20;
 
-            let formData = new FormData();
-            formData.append("bucket_give", bucket);
+            this.draw = function () {
+                ctx.fillStyle = "red";
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+            }
 
-            fetch('/gwanggyun/bucket', { method: "POST", body: formData, }).then((response) => response.json()).then((data) => {
-                alert(data["msg"])
-                window.location.reload()
-            });
-        }
+            this.randomize = function () {
+                this.x = Math.floor(Math.random() * (canvas.width / 20)) * 20;
+                this.y = Math.floor(Math.random() * (canvas.height / 20)) * 20;
+            }
+        }// 방향키 이벤트 처리
+        document.addEventListener("keydown", function (event) {
+            var key = event.keyCode;
+            switch (key) {
+                case 38: // 위쪽 화살표 키
+                    if (worm.direction !== "down") {
+                        worm.direction = "up";
+                    }
+                    break;
+                case 40: // 아래쪽 화살표 키
+                    if (worm.direction !== "up") {
+                        worm.direction = "down";
+                    }
+                    break;
+                case 37: // 왼쪽 화살표 키
+                    if (worm.direction !== "right") {
+                        worm.direction = "left";
+                    }
+                    break;
+                case 39: // 오른쪽 화살표 키
+                    if (worm.direction !== "left") {
+                        worm.direction = "right";
+                    }
+                    break;
+            }
+        });
 
-        // 완료 버튼
-        function done_bucket(num) {
-
-            let formData = new FormData();
-            formData.append("num_give", num);
-
-            fetch('/gwanggyun/bucket/done', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
-                alert(data["msg"])
-                window.location.reload()
-            });
-        }
-
-        // 취소 버튼
-        function reset_bucket(num) {
-
-            let formData = new FormData();
-            formData.append("num_give", num);
-
-            fetch('/gwanggyun/bucket/reset', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
-                alert(data["msg"])
-                window.location.reload()
-            });
-        }
-
-        // 삭제 버튼
-        function delete_bucket(num) {
-
-            let formData = new FormData();
-            formData.append("delete_give", num);
-
-            fetch('/gwanggyun/bucket/delete', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
-                alert(data["msg"])
-                window.location.reload()
-            });
-        }
     </script>
 
+    <script>
+
+        function startTetrisGame() {
+            // Constants
+            const canvasWidth = 30;
+            const canvasHeight = 20;
+            const blockSize = 15;
+            const canvasColor = "#000";
+            const tetrominoColors = [
+                "#000","#FF0D72","#0DC2FF","#0DFF72","#F538FF","#FF8E0D","#FFE138","#3877FF"
+            ];// Tetromino shapes
+            const tetrominoes = [
+                [],
+                [[1, 1, 1, 1]],
+                [[1, 1, 1], [0, 0, 1]],
+                [[1, 1, 1], [1, 0, 0]],
+                [[1, 1], [1, 1]],
+                [[1, 1, 1], [0, 1, 0]],
+                [[0, 1, 1], [1, 1, 0]],
+                [[1, 1, 0], [0, 1, 1]]
+            ];
+
+            // Tetris game variables
+            let canvas, ctx, grid, currentTetromino, currentX, currentY, gameLoop;
+
+            function initializeGame() {
+                canvas = document.createElement("canvas");
+                canvas.width = canvasWidth * blockSize;
+                canvas.height = canvasHeight * blockSize;
+                ctx = canvas.getContext("2d");
+                document.getElementById("col1").appendChild(canvas);
+
+                grid = [];
+                for (let row = 0; row < canvasHeight; row++) {
+                    grid[row] = [];
+                    for (let col = 0; col < canvasWidth; col++) {
+                        grid[row][col] = 0;
+                    }
+                }
+
+                currentTetromino = getRandomTetromino();
+                currentX = Math.floor(canvasWidth / 2) - Math.floor(currentTetromino[0].length / 2);
+                currentY = 0;
+
+                gameLoop = setInterval(updateGame, 1000);
+            }
+
+            function stopTetrisGame() {
+                clearInterval(gameLoop);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                document.getElementById("col1").removeChild(canvas);
+            }
+
+            function getRandomTetromino() {
+                const randomIndex = Math.floor(Math.random() * tetrominoes.length);
+                return tetrominoes[randomIndex];
+            }
+
+            function drawBlock(x, y, color) {
+                ctx.fillStyle = color;
+                ctx.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
+                ctx.strokeStyle = "#111";
+                ctx.strokeRect(x * blockSize, y * blockSize, blockSize, blockSize);
+            }
+
+            function drawGrid() {
+                for (let row = 0; row < canvasHeight; row++) {
+                    for (let col = 0; col < canvasWidth; col++) {
+                        const cell = grid[row][col];
+                        if (cell !== 0) {
+                            drawBlock(col, row, tetrominoColors[cell]);
+                        }
+                    }
+                }
+            }
+
+            function drawTetromino() {
+                for (let row = 0; row < currentTetromino.length; row++) {
+                    for (let col = 0; col < currentTetromino[row].length; col++) {
+                        const cell = currentTetromino[row][col];
+                        if (cell !== 0) {
+                            drawBlock(currentX + col, currentY + row, tetrominoColors[cell]);
+                        }
+                    }
+                }
+            }
+
+            function rotateTetromino() {
+                const rotatedTetromino = [];
+                for (let row = 0; row < currentTetromino[0].length; row++) {
+                    rotatedTetromino[row] = [];
+                    for (let col = 0; col < currentTetromino.length; col++) {
+                        rotatedTetromino[row][col] = currentTetromino[currentTetromino.length - col - 1][row];
+                    }
+                }
+                return rotatedTetromino;
+            }
+
+            function checkCollision(x, y, tetromino) {
+                for (let row = 0; row < tetromino.length; row++) {
+                    for (let col = 0; col < tetromino[row].length; col++) {
+                        if (
+                            tetromino[row][col] !== 0 &&
+                            (y + row >= canvasHeight || x + col < 0 || x + col >= canvasWidth || grid[y + row][x + col] !== 0)
+                        ) {
+                            return true;  // Collision detected
+                        }
+                    }
+                }
+                return false;  // No collision
+            }
+
+            function mergeTetromino() {
+                for (let row = 0; row < currentTetromino.length; row++) {
+                    for (let col = 0; col < currentTetromino[row].length; col++) {
+                        if (currentTetromino[row][col] !== 0) {
+                            grid[currentY + row][currentX + col] = currentTetromino[row][col];
+                        }
+                    }
+                }
+
+                // Check if any rows are completed
+                for (let row = 0; row < currentTetromino.length; row++) {
+                    if (grid[currentY + row].every(cell => cell !== 0)) {
+                        // Clear the completed row
+                        grid.splice(currentY + row, 1);
+                        // Add a new empty row at the top
+                        grid.unshift(Array(canvasWidth).fill(0));
+                    }
+                }
+            }
+
+
+            function clearRows() {
+                for (let row = canvasHeight - 1; row >= 0; row--) {
+                    if (grid[row].every(cell => cell !== 0)) {
+                        grid.splice(row, 1);
+                        grid.unshift(Array(canvasWidth).fill(0));
+                    }
+                }
+            }
+
+            function updateGame() {
+                if (!checkCollision(currentX, currentY + 1, currentTetromino)) {
+                    currentY++;
+                } else {
+                    mergeTetromino();
+                    clearRows();
+                    if (checkCollision(currentX, currentY, currentTetromino)) {
+                        stopTetrisGame();
+                        alert("미완성 ㅠ-ㅠ");
+                        return;
+                    }
+                    currentTetromino = getRandomTetromino();
+                    currentX = Math.floor(canvasWidth / 2) - Math.floor(currentTetromino[0].length / 2);
+                    currentY = 0;
+                }
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawGrid();
+                drawTetromino();
+            }
+
+            function moveTetromino(direction) {
+                const newX = currentX + direction;
+                if (!checkCollision(newX, currentY, currentTetromino)) {
+                    currentX = newX;
+                }
+            }
+
+            function rotateCurrentTetromino() {
+                const rotatedTetromino = rotateTetromino();
+                if (!checkCollision(currentX, currentY, rotatedTetromino)) {
+                    currentTetromino = rotatedTetromino;
+                }
+            }
+
+            document.addEventListener("keydown", event => {
+                switch (event.code) {
+                    case "ArrowLeft":
+                        moveTetromino(-1);
+                        break;
+                    case "ArrowRight":
+                        moveTetromino(1);
+                        break;
+                    case "ArrowDown":
+                        updateGame();
+                        break;
+                    case "ArrowUp":
+                        rotateCurrentTetromino();
+                        break;
+                }
+            });
+
+            initializeGame();
+        }
+
+        startTetrisGame();
+    </script>
 
 </head>
 
 <body>
     <div id="col1-overlay" class="modal-overlay">
         <div id="col1" class="intro-container">
-            
+
             <img class="intro-image"
                 src="https://velog.velcdn.com/images/heelieben/post/675309bf-a0a3-4443-8ced-8a55ce40ce08/image.png"
                 alt="Your Photo">
-                <p> @@@///11조 개발자가 될수있다 !! 아자아자 !!///@@@</p>
+            <p> @@@///11조 개발자가 될수있다 !! 아자아자 !!///@@@</p>
+            <button class="game-button" onclick="startGame()"> 지렁이 게임 </button> <button class="game-button2"
+                onclick="startTetrisGame()"> 테트리스 </button>
             <div class="intro-details">
-                <div class="mybox">
-                    <span class="intro-close" onclick="closeIntro1()">X</span>
-                    <div class="mybucket">
-                        <input id="bucket" class="form-control" type="text" placeholder="11조의 목표 !!" />
-                        <button onclick="save_bucket()" type="button" class="btn btn-outline-warning">가능?</button>
-                    </div>
-                </div>
-                <div class="mybox" id="bucket-list">
-                </div>
+
+                <span class="intro-close" onclick="closeIntro1()">X</span>
+
+            </div>
+
+            <div class="mybox" id="bucket-list">
             </div>
         </div>
-        
     </div>
 
-    <!-- <div id="col2-overlay" class="modal-overlay">
-        <div id="col2" class="intro-container">
-            <img class="intro-image" src="https://t1.daumcdn.net/cfile/tistory/998CFD3D5ACEC1A50A" alt="Your Photo">
-            <div class="intro-details">
-                <div class="intro-details">
-                    <p>이름: 김재익</p>
-                    <p>MBTI: INTP</p>
-                    <p>취미: 게임, 등산</p>
-                    <p>자기 소개: 소규모 팀프, 스터디, 컴퓨터 게임팟 좋아합니다 연락주세요. 백엔드 공부중입니다. 잘부탁드립니다!</p>
-                    <a class="blog_link" href="https://velog.io/@kin5080">개발 블로그</a></p>
-                </div>
-            </div>
-            <span class="intro-close" onclick="closeIntro2()">X</span>
-        </div>
     </div>
-    <div id="col3-overlay" class="modal-overlay">
-        <div id="col3" class="intro-container">
-            <img class="intro-image" src="https://t1.daumcdn.net/cfile/tistory/998CFD3D5ACEC1A50A" alt="Your Photo">
-            <div class="intro-details">
-                <div class="intro-details">
-                    <p>이름: 이명현</p>
-                    <p>MBTI: ESTP</p>
-                    <p>취미: 롤(칼바람나락), 유튜브 시청</p>
-                    <p>자기 소개: 안녕하세요! 이번에 이노베이션 캠프에 지원하게 된 이명현이라고 합니다. 같이 협업하는 능력을 기뤄서 좋은 개발자로 발전하고 싶습니다.</p>
-                    <a class="blog_link" href="https://net-code123.tistory.com/">개발 블로그</a></p>
-                </div>
-            </div>
-            <span class="intro-close" onclick="closeIntro3()">X</span>
-        </div>
-    </div>
-    <div id="col4-overlay" class="modal-overlay">
-        <div id="col4" class="intro-container">
-            <img class="intro-image" src="https://t1.daumcdn.net/cfile/tistory/998CFD3D5ACEC1A50A" alt="Your Photo">
-                <div class="intro-details">
-                    <p>이름: 유시환</p>
-                    <p>MBTI: ISTP</p>
-                    <p>취미: 게임, 축구</p>
-                    <p>자기 소개: 심리학을 전공했지만 사람마음 알다가도 모르겠어서 다른 길을 찾고있습니다. 레데리라는 게임을 하다가 프로그래밍이라는 것에 궁금증이 생겨 개발
-                        공부를 시작하게
-                        됐습니다. 아직 모르는 것이 많지만 열심히 공부해보겠습니다.</p>
-                    <a class="blog_link" href="https://goonerd.tistory.com/">개발 블로그</a></p>
-                </div>
-                <span class="intro-close" onclick="closeIntro4()">X</span>
-            </div>
-        </div>
-    <div id="col5-overlay" class="modal-overlay">
-        <div id="col5" class="intro-container">
-            <img class="intro-image" src="https://t1.daumcdn.net/cfile/tistory/998CFD3D5ACEC1A50A" alt="Your Photo">
-            <div class="intro-details">
-                <p>이름: 박영준</p>
-                <p>MBTI: INTJ</p>
-                <p>취미: 유튜브 시청, 게임</p>
-                <p>자기 소개: 안녕하세요. 이노베이션 캠프에 합류한 백엔드 지망생입니다. 좋은 개발자가 되기 위해 노력 중입니다. 잘 부탁드립니다!</p>
-                <a class="blog_link" href="https://velog.io/@baekgom">개발 블로그</a></p>
-            </div>
-            <span class="intro-close" onclick="closeIntro5()">X</span>
-        </div>
-    </div> -->
 
     <!--모달 창 코드 -->
     <div>
