@@ -102,8 +102,8 @@
         }
 
         .intro-image {
-            width: 100%;
-            height: auto;
+            width: 500px;
+            height: 300px;
             border-radius: 50px;
             margin-bottom: 10px;
             border: 5px solid #ff9f4c;
@@ -118,10 +118,11 @@
         }
 
         .intro-close {
+            color:#ff9f4c;
             font-size: 50px;
             position: absolute;
-            top: 5px;
-            right: 15px;
+            top: 50px;
+            right: 450px;
             cursor: pointer;
         }
 
@@ -130,7 +131,7 @@
             font-size: 50px;
         }
 
-        .blog_link {
+        /* .blog_link {
             display: inline-block;
             padding: 8px 16px;
             margin-top: 20px;
@@ -144,51 +145,160 @@
 
         .blog_link:hover {
             background-color: #ffaf81;
+        } */
+
+
+        .mybox {
+            width: 70%;
+            max-width: 500px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px  #ff9f4c;
+            color: transparent;
+            margin: 20px;
+            font-size: 32px;
+            display: inline-block;
+        }
+
+        .mybucket {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mybucket>input {
+            width: 800px;
+            height: 50px;
+            font-size: 25px;
+            margin-right: 30px;
+            text-align: center;
+            border: 3px solid rgb(255, 179, 124);
+            color: rgb(0, 0, 0);
+            border-radius: 10px;
+        }
+
+        .mybucket>button {
+            width: 150px;
+            height: 50px;
+            font-size: 25px;
+            background-color: transparent;
+            border: 3px solid rgb(255, 179, 124);
+            color: rgb(0, 0, 0);
+            border-radius: 50px;
+            
+        }
+        .mybucket>button:hover {
+            border: 5px solid rgb(255, 179, 124);
+
+        }
+
+        .mybox>li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            min-height: 48px;
+        }
+
+        .mybox>li>h2 {
+            max-width: 75%;
+            font-size: 20px;
+            font-weight: 500;
+            margin-right: auto;
+            margin-bottom: 0px;
+        }
+
+        .mybox>li>h2.done {
+            opacity: 0.4;
+        }
+
+        .donebutton {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            background-color: transparent;
+            border-radius: 3px;
+            border-color: orange;
+            border-width: thin;
+        }
+
+        .resetbutton {
+            width: 50px;
+            height: 35px;
+            font-size: 20px;
+            background-color: transparent;
+            border-radius: 3px;
+            border-color: orange;
+            border-width: thin;
+            margin-right: 10px;
+        }
+
+        .donebutton:hover {
+            background-color: #ffffff;
+        }
+
+        .resetbutton:hover {
+            background-color: #ff6347;
+        }
+
+        .deletebutton:hover {
+            background-color: #b22222;
+        }
+
+        .deletebutton {
+            width: 50px;
+            height: 35px;
+            font-size: 20px;
+            background-color: transparent;
+            border-radius: 3px;
+            border-color: red;
+            border-width: thin;
         }
     </style>
 
     <script>
-         
+
         function modal1(col1) {
             var modalOverlay = document.getElementById('col1-overlay');
-            modalOverlay.style.display = 'block';  
+            modalOverlay.style.display = 'block';
         }   /* 각 번호로 카드 호출 */
-        function modal2(col2) {
-            var modalOverlay = document.getElementById('col2-overlay');
-            modalOverlay.style.display = 'block';
-        }
-        function modal3(col3) {
-            var modalOverlay = document.getElementById('col3-overlay');
-            modalOverlay.style.display = 'block';
-        }
-        function modal4(col4) {
-            var modalOverlay = document.getElementById('col4-overlay');
-            modalOverlay.style.display = 'block';
-        }
-        function modal5(col5) {
-            var modalOverlay = document.getElementById('col5-overlay');
-            modalOverlay.style.display = 'block';
-        }
+        // function modal2(col2) {
+        //     var modalOverlay = document.getElementById('col2-overlay');
+        //     modalOverlay.style.display = 'block';
+        // }
+        // function modal3(col3) {
+        //     var modalOverlay = document.getElementById('col3-overlay');
+        //     modalOverlay.style.display = 'block';
+        // }
+        // function modal4(col4) {
+        //     var modalOverlay = document.getElementById('col4-overlay');
+        //     modalOverlay.style.display = 'block';
+        // }
+        // function modal5(col5) {
+        //     var modalOverlay = document.getElementById('col5-overlay');
+        //     modalOverlay.style.display = 'block';
+        // }
         function closeIntro1(col1) {
             var modalOverlay = document.getElementById('col1-overlay');
             modalOverlay.style.display = 'none';
         }  /* 각 번호로 카드 호출 */
-        function closeIntro2(col2) {
-            var modalOverlay = document.getElementById('col2-overlay');
-            modalOverlay.style.display = 'none';
-        }
-        function closeIntro3(col3) {
-            var modalOverlay = document.getElementById('col3-overlay');
-            modalOverlay.style.display = 'none';
-        }
-        function closeIntro4(col4) {
-            var modalOverlay = document.getElementById('col4-overlay');
-            modalOverlay.style.display = 'none';
-        }
-        function closeIntro5(col5) {
-            var modalOverlay = document.getElementById('col5-overlay');
-            modalOverlay.style.display = 'none';
-        }
+        // function closeIntro2(col2) {
+        //     var modalOverlay = document.getElementById('col2-overlay');
+        //     modalOverlay.style.display = 'none';
+        // }
+        // function closeIntro3(col3) {
+        //     var modalOverlay = document.getElementById('col3-overlay');
+        //     modalOverlay.style.display = 'none';
+        // }
+        // function closeIntro4(col4) {
+        //     var modalOverlay = document.getElementById('col4-overlay');
+        //     modalOverlay.style.display = 'none';
+        // }
+        // function closeIntro5(col5) {
+        //     var modalOverlay = document.getElementById('col5-overlay');
+        //     modalOverlay.style.display = 'none';
+        // }
 
         function enter() {
             window.open("다음 페이지");
@@ -202,6 +312,85 @@
             alert("Let's play the Coding!");
             window.open("https://app.gather.town/app/jnYbo3ToCrDXqjbh/innovation_camp_dongbuk2");
         }
+        $(document).ready(function () {
+            show_bucket();
+        });
+        function show_bucket() {
+            fetch('/gwanggyun/bucket').then(res => res.json()).then(data => {
+                let rows = data['result']
+                $('#bucket-list').empty()
+
+                rows.forEach((a) => {
+                    let bucket = a['bucket']
+                    let num = a['num']
+                    let done = a['done']
+
+                    let temp_html = ``
+                    if (done == 0) {
+                        temp_html = `<li>
+                                        <h2>□ ${bucket}</h2>
+                                        <button onclick="done_bucket(${num})" class="donebutton" type="button" class="btn btn-outline-primary">완료</button>
+                                    </li>`
+                    } else {
+                        temp_html = `<li>
+                                        <h2 class="done">☑ ${bucket}</h2>
+                                        <button onclick="reset_bucket(${num})" class="resetbutton" type="button" class="btn btn-outline-danger">취소</button>
+                                        <button onclick="delete_bucket(${num})" class="deletebutton" type="button" class="btn btn-outline-danger">삭제</button>
+                                    </li>`
+                    }
+                    $('#bucket-list').append(temp_html)
+                })
+            })
+        }
+
+        // 오늘의 목표 추가 버튼
+        function save_bucket() {
+            let bucket = $('#bucket').val();
+
+            let formData = new FormData();
+            formData.append("bucket_give", bucket);
+
+            fetch('/gwanggyun/bucket', { method: "POST", body: formData, }).then((response) => response.json()).then((data) => {
+                alert(data["msg"])
+                window.location.reload()
+            });
+        }
+
+        // 완료 버튼
+        function done_bucket(num) {
+
+            let formData = new FormData();
+            formData.append("num_give", num);
+
+            fetch('/gwanggyun/bucket/done', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
+                alert(data["msg"])
+                window.location.reload()
+            });
+        }
+
+        // 취소 버튼
+        function reset_bucket(num) {
+
+            let formData = new FormData();
+            formData.append("num_give", num);
+
+            fetch('/gwanggyun/bucket/reset', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
+                alert(data["msg"])
+                window.location.reload()
+            });
+        }
+
+        // 삭제 버튼
+        function delete_bucket(num) {
+
+            let formData = new FormData();
+            formData.append("delete_give", num);
+
+            fetch('/gwanggyun/bucket/delete', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
+                alert(data["msg"])
+                window.location.reload()
+            });
+        }
     </script>
 
 
@@ -211,19 +400,24 @@
     <div id="col1-overlay" class="modal-overlay">
         <div id="col1" class="intro-container">
             <img class="intro-image"
-                src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FniMzj%2Fbtsi11sCml9%2FCM3sFK6AoFASCLzbrzpQfK%2Fimg.png"
+                src="https://velog.velcdn.com/images/heelieben/post/675309bf-a0a3-4443-8ced-8a55ce40ce08/image.png"
                 alt="Your Photo">
+                <p> @@@///11조 개발자가 될수있다 !! 아자아자 !!///@@@</p>
             <div class="intro-details">
-                <p>이름: 김광균</p>
-                <p>MBTI: ESFJ</p>
-                <p>취미: 맛있는거 먹으러 가기, 게임</p>
-                <p>자기 소개: 안녕하세요 혼자 삽질하는거 좋아해서 개발공부 도전해봅니다. 모든게 처음이라 많이 부족하지만 잘 부탁드립니다 !</p>
-                <a class="blog_link" href="https://kyuni9786.tistory.com/">개발 블로그</a></p>
+                <div class="mybox">
+                    <div class="mybucket">
+                        <input id="bucket" class="form-control" type="text" placeholder="11조의 목표 !!" />
+                        <button onclick="save_bucket()" type="button" class="btn btn-outline-warning">가능?</button>
+                    </div>
+                </div>
+                <div class="mybox" id="bucket-list">
+                </div>
             </div>
-            <span class="intro-close" onclick="closeIntro1()">X</span>
         </div>
+        <span class="intro-close" onclick="closeIntro1()">X</span>
     </div>
-    <div id="col2-overlay" class="modal-overlay">
+    </div>
+    <!-- <div id="col2-overlay" class="modal-overlay">
         <div id="col2" class="intro-container">
             <img class="intro-image" src="https://t1.daumcdn.net/cfile/tistory/998CFD3D5ACEC1A50A" alt="Your Photo">
             <div class="intro-details">
@@ -280,17 +474,17 @@
             </div>
             <span class="intro-close" onclick="closeIntro5()">X</span>
         </div>
-    </div>
+    </div> -->
 
     <!--모달 창 코드 -->
     <div>
         <div class="door">
-            <!-- 대문 이미지 -->  
-            <!-- 각번호로 호출가능 modal1('col1'), modal2('col2') -->
-            <img onclick="modal5('col5')"    
+            <!-- 대문 이미지 -->
+            <!-- 각번호로 호출가능 modal1('col1'), modal2() -->
+            <img onclick="modal1('col1')"
                 src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbDM4Lh%2FbtsiOKznm2t%2Fry7hmah1aWbP1AV0n9wPMK%2Fimg.png"
                 width="500" height="500" class="image" alt="11조" />
-              
+
             <!-- ENTER 버튼 -->
             <button onclick="enter()">ENTER</button>
 
