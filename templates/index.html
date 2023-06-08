@@ -26,14 +26,23 @@
             border: 5px solid #ff9f4c;
             box-shadow: 0 0 5px rgba(255, 187, 134, 0.2);
             border-radius: 50px;
-            margin-top: 150px
+            margin-top: 20px
         }
+
+        .image:hover {
+            border: 8px solid #ff9f4c;
+        }
+
 
         .image2 {
             border: 5px solid #ffcfa5;
             box-shadow: 0 0 5px rgba(255, 187, 134, 0.2);
             border-radius: 50px;
             margin-top: 10px;
+        }
+
+        .image2:hover { 
+            border: 8px solid #ffcfa5;
         }
 
         .door>button {
@@ -52,30 +61,7 @@
             border: 15px solid white;
         }
 
-        .gather {
-            width: 300px;
-            height: 200px;
-            background-color: #ff9f4c;
-            border-radius: 20px;
-            border: 3px solid rgb(255, 179, 124);
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gather:hover {
-            border: 3px solid rgb(255, 179, 124);
-            background-color: #ffcfa6;
-        }
-
-        .gather-text {
-
-            font-size: 24px;
-            color: white;
-        }
-
-        /* .modal-overlay {     
+        .modal-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -84,7 +70,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 9999;
-        }  
+        }
 
         .modal-content {
             width: 300px;
@@ -158,18 +144,18 @@
 
         .blog_link:hover {
             background-color: #ffaf81;
-        } */
+        }
     </style>
 
     <script>
-        // function enter() {
-        //     var modalOverlay = document.getElementById('modal-overlay');
-        //     modalOverlay.style.display = 'block';
-        // }
-        // function closeIntro() {
-        //     var modalOverlay = document.getElementById('modal-overlay');
-        //     modalOverlay.style.display = 'none';
-        // } <!--모달 창 코드 -->
+        function modal() {
+            var modalOverlay = document.getElementById('modal-overlay');
+            modalOverlay.style.display = 'block';
+        }
+        function closeIntro() {
+            var modalOverlay = document.getElementById('modal-overlay');
+            modalOverlay.style.display = 'none';
+        } <!--모달 창 코드 -->
         function enter() {
             window.open("다음 페이지");
         }
@@ -189,7 +175,7 @@
 </head>
 
 <body>
-    <!-- <div id="modal-overlay" class="modal-overlay">
+    <div id="modal-overlay" class="modal-overlay">
         <div class="intro-container">
             <img class="intro-image" src="https://t1.daumcdn.net/cfile/tistory/998CFD3D5ACEC1A50A" alt="Your Photo">
             <div class="intro-details">
@@ -202,11 +188,13 @@
             <span class="intro-close" onclick="closeIntro()">X</span>
         </div>
     </div>
-    </div> --> <!--모달 창 코드 -->
+    </div> -->
+    <!--모달 창 코드 -->
     <div>
         <div class="door">
             <!-- 대문 이미지 -->
-            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbDM4Lh%2FbtsiOKznm2t%2Fry7hmah1aWbP1AV0n9wPMK%2Fimg.png"
+            <img onclick="modal()"
+                src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbDM4Lh%2FbtsiOKznm2t%2Fry7hmah1aWbP1AV0n9wPMK%2Fimg.png"
                 width="500" height="500" class="image" alt="11조" />
 
             <!-- ENTER 버튼 -->
@@ -216,15 +204,12 @@
             <button onclick="exit()">EXIT</button>
 
             <!-- 게더 이미지 -->
-            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FniMzj%2Fbtsi11sCml9%2FCM3sFK6AoFASCLzbrzpQfK%2Fimg.png"
+            <img onclick="playGather()"
+                src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FniMzj%2Fbtsi11sCml9%2FCM3sFK6AoFASCLzbrzpQfK%2Fimg.png"
                 width="500" height="500" class="image2" alt="11조" />
 
-            <!-- 게더 버튼 -->
-            <div class="gather" onclick="playGather()">
-                <span class="gather-text">Click to Play Gather!</span>
-
-            </div>
         </div>
+    </div>
     </div>
 </body>
 
