@@ -20,7 +20,11 @@ import tools
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('indexHome.html')
+
+@app.route('/main')
+def gomain():
+    return render_template('indexmain.html')
 
 
 # 자기소개 텍스트 정보 불러오기

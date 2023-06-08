@@ -59,20 +59,28 @@ $(document).ready(function () {
 
 // 방명록 조회 후 화면 출력
 function show_guestbook() {
-    $('#test-section').empty()
-    fetch("/guestbook_read")
-        .then((res) => res.json())
-        .then((response) => {
-            let rows = response['users']
-            rows.forEach((a) => {
-                let name = a['name']
-                let guestbook = a['guestbook']
-                let own_uuid = a['uuid']
+    $('#comment-list').empty()
+    let count = 0
+    setInterval(() => {
+        fetch("/guestbook_read")
+            .then((res) => res.json())
+            .then((response) => {
+                let rows = response['users']
+                console.log(rows.length, count)
+                if (rows.length > count) {
+                    for (let i = count; i < rows.length; i++) {
+                        let a = rows[i]
+                        let name = a['name']
+                        let guestbook = a['guestbook']
+                        let own_uuid = a['uuid']
 
-                let temp_html = guestbook_shape(name, own_uuid, guestbook)
-                $('#test-section').prepend(temp_html)
+                        let temp_html = guestbook_shape(name, own_uuid, guestbook)
+                        $('#comment-list').prepend(temp_html)
+                    }
+                    count = rows.length
+                }
             })
-        });
+    }, 1000)
 }
 
 // 방명록 생성
@@ -86,7 +94,7 @@ function save_guestbook() {
     formData.append("password_give", pw)
     formData.append("guestbook_give", guestbook)
 
-    fetch("/guestbook_save", { method: "POST", body: formData, })
+    fetch("/guestbook_save", {method: "POST", body: formData,})
         .then((res) => res.json())
         .then((response) => {
             let row = response['user']
@@ -94,45 +102,45 @@ function save_guestbook() {
             let guestbook = row['guestbook']
             let own_uuid = row['uuid']
 
-            let temp_html = guestbook_shape(name, own_uuid, guestbook)
-            $('#test-section').prepend(temp_html)
+            // let temp_html = guestbook_shape(name, own_uuid, guestbook)
+            // $('#test-section').prepend(temp_html)
         });
 
 }
 
-// 방명록 조회, 생성 시 필요한 방명록 모양
+// 방명록 show, save 시 필요한 방명록 모양
 function guestbook_shape(name, own_uuid, guestbook) {
     return `<div id="${own_uuid}">
-                <p>${name}</p>
-                <p class="guestbook">${guestbook}</p>
-                <div id="edit-guestbook-${own_uuid}" style="display: none">
-                    <input id="edit-guestbook-text-${own_uuid}" type="text" />
-                    <input id="guestbook-password-${own_uuid}" type="text" placeholder="비밀번호"/>
-                    <button onclick="modify_guestbook('${own_uuid}')" type="button" class="btn btn-primary">저장</button>
-                    <button onclick="cancel_edit('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
-                </div>
-                <button onclick="edit_guestbook('${own_uuid}', '${guestbook}')" type="button" class="btn btn-primary">수정</button>
-                <button onclick="check_delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">삭제</button>
-                <div id="delete-guestbook-${own_uuid}" style="display: none">
-                    <input id="guestbook-password-${own_uuid}" type="text" placeholder="비밀번호"/>
-                    <button onclick="delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">확인</button>
-                    <button onclick="cancel_delete('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
-                </div>
-            </div>`
+                        <p>${name}</p>
+                        <p class="guestbook">${guestbook}</p>
+                        <div id="edit-guestbook-${own_uuid}" style="display: none">
+                            <input id="edit-guestbook-text-${own_uuid}" type="text" />
+                            <input id="edit-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호"/>
+                            <button onclick="modify_guestbook('${own_uuid}')" type="button" class="btn btn-primary">저장</button>
+                            <button onclick="cancel_edit('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
+                        </div>
+                        <button onclick="edit_guestbook('${own_uuid}', '${guestbook}')" type="button" class="btn btn-primary">수정</button>
+                        <button onclick="check_delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">삭제</button>
+                        <div id="delete-guestbook-${own_uuid}" style="display: none">
+                            <input id="delete-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호"/>
+                            <button onclick="delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">확인</button>
+                            <button onclick="cancel_delete('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
+                        </div>
+                    </div>`
 
 }
 
 // 방명록 수정
 function modify_guestbook(own_uuid) {
     let new_guestbook = $(`#edit-guestbook-text-${own_uuid}`).val()
-    let pw = $(`#guestbook-password-${own_uuid}`)
+    let pw = $(`#edit-guestbook-password-${own_uuid}`)
 
     let formData = new FormData();
     formData.append("password_give", pw.val())
     formData.append("new_guestbook_give", new_guestbook)
     formData.append("uuid_give", own_uuid)
 
-    fetch("/guestbook_modify", { method: "POST", body: formData, })
+    fetch("/guestbook_modify", {method: "POST", body: formData,})
         .then((res) => res.json())
         .then((response) => {
             let result = response['result']
@@ -141,9 +149,9 @@ function modify_guestbook(own_uuid) {
                 let row = response['user']
                 $(`#edit-guestbook-${own_uuid}`).hide();
                 $(`#${own_uuid} > p.guestbook`).text(row['guestbook']).show();
-                pw.css({ 'border': '1px solid black' })
+                pw.css({'border': '1px solid black'})
             } else {
-                pw.css({ 'border': '1px solid red' })
+                pw.css({'border': '1px solid red'})
                 console.log("비밀번호 다름")
             }
         });
@@ -166,19 +174,19 @@ function cancel_edit(own_uuid) {
 
 // 방명록 삭제
 function delete_guestbook(own_uuid) {
-    let pw = $(`#guestbook-password-${own_uuid}`)
+    let pw = $(`#delete-guestbook-password-${own_uuid}`)
 
     let formData = new FormData();
     formData.append("uuid_give", own_uuid)
     formData.append("password_give", pw.val())
 
-    fetch("/guestbook_delete", { method: "POST", body: formData, })
+    fetch("/guestbook_delete", {method: "POST", body: formData,})
         .then(res => res.json())
         .then((response) => {
-            if (response['result']) {
+            if(response['result']){
                 $(`#${own_uuid}`).remove()
             } else {
-                pw.css({ 'border': '1px solid red' })
+                pw.css({'border': '1px solid red'})
                 console.log("비밀번호 다름")
             }
         });
@@ -194,7 +202,7 @@ function cancel_delete(own_uuid) {
 }
 
 function test1() {
-    fetch("/test").then(res => res.json()).then(response => {
+    fetch("/test").then(res=>res.json()).then(response=>{
         console.log(response)
     })
 }
