@@ -14,6 +14,7 @@ from flask_bcrypt import bcrypt
 
 import tools
 
+
 # web 구동은 flask사용 DB는 MongoDB 사용
 
 
@@ -56,6 +57,7 @@ def guestbook_save():
     user = db.team11_guestbook.find_one({'uuid': own_uuid}, {'_id': False, 'password': False})
 
     print(user['name'])
+
     return jsonify({'user': user})
 
 
@@ -77,7 +79,7 @@ def guestbook_modify():
 
     user = db.team11_guestbook.find_one({'uuid': uuid_receive}, {'_id': False})
 
-    result = tools.checkpassword(pw_receive, user['password'])
+    result = tools.check_password(pw_receive, user['password'])
 
     if result:
         db.team11_guestbook.update_one({
@@ -103,7 +105,7 @@ def guestbook_delete():
 
     user = db.team11_guestbook.find_one({'uuid': uuid_receive}, {'_id': False})
 
-    result = tools.checkpassword(pw_receive, user['password'])
+    result = tools.check_password(pw_receive, user['password'])
     if result:
         db.team11_guestbook.delete_one({'uuid': uuid_receive, })
 
