@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    
+    <title>Hello 11</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+        * {
+            font-family: 'Nanum Pen Script', cursive;
+        }
+
+        
+
+        .door {
+            height: 300px;
+            width: auto;
+            margin: 20px auto 20px auto;
+            border-radius: 50px;
+            margin-top: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image {
+            border: 5px solid #ff9f4c;
+            box-shadow: 0 0 5px rgba(255, 187, 134, 0.2);
+            border-radius: 50px;
+            margin-top: 100px
+        }
+
+        .image:hover {
+            border: 8px solid #ff9f4c;
+        }
+
+
+        .image2 {
+            border: 5px solid #ffcfa5;
+            box-shadow: 0 0 5px rgba(255, 187, 134, 0.2);
+            border-radius: 50px;
+            margin-top: 10px;
+        }
+
+        .image2:hover {
+            border: 8px solid #ffcfa5;
+        }
+
+        .door>button {
+            width: 150px;
+            height: 100px;
+            background-color: transparent;
+            border: 3px solid rgb(255, 179, 124);
+            color: orange;
+            border-radius: 50px;
+            margin-top: 10px;
+            font-size: 30px;
+        }
+
+        .door>button:hover {
+            font-size: 50px;
+            border: 15px solid white;
+        }
+        .mainEnter{
+             color: orange;
+             }
+        .mainEnter:hover {
+            font-size: 50px;
+            border: 15px solid white;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .modal-content {
+            width: 300px;
+            height: 200px;
+            background-color: white;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .intro-container {
+            background-color: #fff3ed;
+            position: relative;
+            margin: 20px auto 20px auto;
+            padding: 20px 20px 20px 20px;
+            width: 500px;
+            height: 800px;
+            padding: 40px;
+            border: 5px solid #ff9f4c;
+            box-shadow: 0 0 5px rgba(255, 142, 56, 0.2);
+            font-size: 30px;
+            color: rgb(227, 117, 6);
+            margin-top: 20px;
+            border-radius: 50px;
+        }
+
+        .intro-image {
+            width: 500px;
+            height: 300px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            border: 5px solid #ff9f4c;
+        }
+
+        .intro-details {
+            margin-bottom: 10px;
+        }
+
+        .intro-details p {
+            margin: 5px 0;
+        }
+
+        .intro-close {
+            color: #ff9f4c;
+            font-size: 50px;
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .intro-close:hover {
+            color: rgb(255, 252, 252);
+            font-size: 50px;
+        }
+
+        .game-button {
+            font-size: 20px;
+            border-color: #ffffff;
+            padding: 8px 16px;
+            margin-top: 10px;
+            background-color: #ff9f4c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+        }
+
+        .game-button:hover {
+            background-color: #ffaf81;
+        }
+
+        .game-button2 {
+            font-size: 20px;
+            border-color: #ffffff;
+            padding: 8px 16px;
+            margin-top: 10px;
+            background-color: #ff9f4c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+        }
+
+        .game-button2:hover {
+            background-color: #ffaf81;
+        }
+    </style>
+
+    <script>
+
+        function modal1(col1) {
+            var modalOverlay = document.getElementById('col1-overlay');
+            modalOverlay.style.display = 'block';
+        }
+
+
+        function exit() {
+            window.close();
+        }
+
+        function playGather() {
+            alert("Let's play the Coding!");
+            window.open("https://app.gather.town/app/jnYbo3ToCrDXqjbh/innovation_camp_dongbuk2");
+        }
+
+        var canvas; var ctx; var worm; var apple; var gameLoop;
+
+
+        function closeIntro1() {
+            var modalOverlay = document.getElementById('col1-overlay');
+            modalOverlay.style.display = 'none';
+
+            // Stop the game
+            stopGame();
+        }
+
+        function startGame() {
+            alert("방향키로 이동해서 빨간사과를 먹으면 돼요^~^ 꼬리를 붙잡히면 게임오버 !!");
+            canvas = document.createElement("canvas");
+            canvas.width = 500;
+            canvas.height = 330;
+            ctx = canvas.getContext("2d");
+            document.getElementById("col1").appendChild(canvas);
+
+            worm = new Worm();
+            apple = new Apple();
+
+            gameLoop = setInterval(updateGame, 1000 / 10); // 프레임
+        }
+
+        function stopGame() {
+            clearInterval(gameLoop);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById("col1").removeChild(canvas);
+        }
+
+        function updateGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            worm.update();
+            apple.draw();
+
+            if (worm.eat(apple)) {
+                apple.randomize();
+            }
+
+            worm.draw();
+
+            if (worm.checkCollision()) {
+                stopGame();
+                alert("YOU DIE");
+            }
+        }
+
+        function Worm() {
+            this.x = 0;
+            this.y = 0;
+            this.size = 20;
+            this.speed = 20;
+            this.direction = "right";
+            this.tail = [];
+
+            this.draw = function () {
+                ctx.fillStyle = "green";
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+
+                for (var i = 0; i < this.tail.length; i++) {
+                    ctx.fillRect(this.tail[i].x, this.tail[i].y, this.size, this.size);
+                }
+            }
+
+            this.update = function () {
+                for (var i = this.tail.length - 1; i > 0; i--) {
+                    this.tail[i] = this.tail[i - 1];
+                }
+
+                if (this.tail.length > 0) {
+                    this.tail[0] = { x: this.x, y: this.y };
+                }
+
+                switch (this.direction) {
+                    case "up":
+                        this.y -= this.speed;
+                        break;
+                    case "down":
+                        this.y += this.speed;
+                        break;
+                    case "left":
+                        this.x -= this.speed;
+                        break;
+                    case "right":
+                        this.x += this.speed;
+                        break;
+                }
+
+            }
+
+            this.eat = function (apple) {
+                if (this.x === apple.x && this.y === apple.y) {
+                    this.tail.push({});
+                    return true;
+                }
+                return false;
+            }
+
+            this.checkCollision = function () {
+                if (this.x < 0 || this.x >= canvas.width || this.y < 0 || this.y >= canvas.height) {
+                    return true;
+                }
+
+                for (var i = 0; i < this.tail.length; i++) {
+                    if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        }
+
+        function Apple() {
+            this.x = Math.floor(Math.random() * (canvas.width / 20)) * 20;
+            this.y = Math.floor(Math.random() * (canvas.height / 20)) * 20;
+            this.size = 20;
+
+            this.draw = function () {
+                ctx.fillStyle = "red";
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+            }
+
+            this.randomize = function () {
+                this.x = Math.floor(Math.random() * (canvas.width / 20)) * 20;
+                this.y = Math.floor(Math.random() * (canvas.height / 20)) * 20;
+            }
+        }// 방향키 이벤트 처리
+        document.addEventListener("keydown", function (event) {
+            var key = event.keyCode;
+            switch (key) {
+                case 38: // 위쪽 화살표 키
+                    if (worm.direction !== "down") {
+                        worm.direction = "up";
+                    }
+                    break;
+                case 40: // 아래쪽 화살표 키
+                    if (worm.direction !== "up") {
+                        worm.direction = "down";
+                    }
+                    break;
+                case 37: // 왼쪽 화살표 키
+                    if (worm.direction !== "right") {
+                        worm.direction = "left";
+                    }
+                    break;
+                case 39: // 오른쪽 화살표 키
+                    if (worm.direction !== "left") {
+                        worm.direction = "right";
+                    }
+                    break;
+            }
+        });
+
+    </script>
+
+    <script>
+
+        function startTetrisGame() {
+            alert("미완성 ㅠ-ㅠ"); }
+        //     // Constants
+        //     const canvasWidth = 30;
+        //     const canvasHeight = 20;
+        //     const blockSize = 15;
+        //     const canvasColor = "#000";
+        //     const tetrominoColors = [
+        //         "#000","#FF0D72","#0DC2FF","#0DFF72","#F538FF","#FF8E0D","#FFE138","#3877FF"
+        //     ];// Tetromino shapes
+        //     const tetrominoes = [
+        //         [],
+        //         [[1, 1, 1, 1]],
+        //         [[1, 1, 1], [0, 0, 1]],
+        //         [[1, 1, 1], [1, 0, 0]],
+        //         [[1, 1], [1, 1]],
+        //         [[1, 1, 1], [0, 1, 0]],
+        //         [[0, 1, 1], [1, 1, 0]],
+        //         [[1, 1, 0], [0, 1, 1]]
+        //     ];
+
+        //     // Tetris game variables
+        //     let canvas, ctx, grid, currentTetromino, currentX, currentY, gameLoop;
+
+        //     function initializeGame() {
+        //         canvas = document.createElement("canvas");
+        //         canvas.width = canvasWidth * blockSize;
+        //         canvas.height = canvasHeight * blockSize;
+        //         ctx = canvas.getContext("2d");
+        //         document.getElementById("col1").appendChild(canvas);
+
+        //         grid = [];
+        //         for (let row = 0; row < canvasHeight; row++) {
+        //             grid[row] = [];
+        //             for (let col = 0; col < canvasWidth; col++) {
+        //                 grid[row][col] = 0;
+        //             }
+        //         }
+
+        //         currentTetromino = getRandomTetromino();
+        //         currentX = Math.floor(canvasWidth / 2) - Math.floor(currentTetromino[0].length / 2);
+        //         currentY = 0;
+
+        //         gameLoop = setInterval(updateGame, 1000);
+        //     }
+
+        //     function stopTetrisGame() {
+        //         clearInterval(gameLoop);
+        //         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //         document.getElementById("col1").removeChild(canvas);
+        //     }
+
+        //     function getRandomTetromino() {
+        //         const randomIndex = Math.floor(Math.random() * tetrominoes.length);
+        //         return tetrominoes[randomIndex];
+        //     }
+
+        //     function drawBlock(x, y, color) {
+        //         ctx.fillStyle = color;
+        //         ctx.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
+        //         ctx.strokeStyle = "#111";
+        //         ctx.strokeRect(x * blockSize, y * blockSize, blockSize, blockSize);
+        //     }
+
+        //     function drawGrid() {
+        //         for (let row = 0; row < canvasHeight; row++) {
+        //             for (let col = 0; col < canvasWidth; col++) {
+        //                 const cell = grid[row][col];
+        //                 if (cell !== 0) {
+        //                     drawBlock(col, row, tetrominoColors[cell]);
+        //                 }
+        //             }
+        //         }
+        //     }
+
+        //     function drawTetromino() {
+        //         for (let row = 0; row < currentTetromino.length; row++) {
+        //             for (let col = 0; col < currentTetromino[row].length; col++) {
+        //                 const cell = currentTetromino[row][col];
+        //                 if (cell !== 0) {
+        //                     drawBlock(currentX + col, currentY + row, tetrominoColors[cell]);
+        //                 }
+        //             }
+        //         }
+        //     }
+
+        //     function rotateTetromino() {
+        //         const rotatedTetromino = [];
+        //         for (let row = 0; row < currentTetromino[0].length; row++) {
+        //             rotatedTetromino[row] = [];
+        //             for (let col = 0; col < currentTetromino.length; col++) {
+        //                 rotatedTetromino[row][col] = currentTetromino[currentTetromino.length - col - 1][row];
+        //             }
+        //         }
+        //         return rotatedTetromino;
+        //     }
+
+        //     function checkCollision(x, y, tetromino) {
+        //         for (let row = 0; row < tetromino.length; row++) {
+        //             for (let col = 0; col < tetromino[row].length; col++) {
+        //                 if (
+        //                     tetromino[row][col] !== 0 &&
+        //                     (y + row >= canvasHeight || x + col < 0 || x + col >= canvasWidth || grid[y + row][x + col] !== 0)
+        //                 ) {
+        //                     return true;  // Collision detected
+        //                 }
+        //             }
+        //         }
+        //         return false;  // No collision
+        //     }
+
+        //     function mergeTetromino() {
+        //         for (let row = 0; row < currentTetromino.length; row++) {
+        //             for (let col = 0; col < currentTetromino[row].length; col++) {
+        //                 if (currentTetromino[row][col] !== 0) {
+        //                     grid[currentY + row][currentX + col] = currentTetromino[row][col];
+        //                 }
+        //             }
+        //         }
+
+        //         // Check if any rows are completed
+        //         for (let row = 0; row < currentTetromino.length; row++) {
+        //             if (grid[currentY + row].every(cell => cell !== 0)) {
+        //                 // Clear the completed row
+        //                 grid.splice(currentY + row, 1);
+        //                 // Add a new empty row at the top
+        //                 grid.unshift(Array(canvasWidth).fill(0));
+        //             }
+        //         }
+        //     }
+
+
+        //     function clearRows() {
+        //         for (let row = canvasHeight - 1; row >= 0; row--) {
+        //             if (grid[row].every(cell => cell !== 0)) {
+        //                 grid.splice(row, 1);
+        //                 grid.unshift(Array(canvasWidth).fill(0));
+        //             }
+        //         }
+        //     }
+
+        //     function updateGame() {
+        //         if (!checkCollision(currentX, currentY + 1, currentTetromino)) {
+        //             currentY++;
+        //         } else {
+        //             mergeTetromino();
+        //             clearRows();
+        //             if (checkCollision(currentX, currentY, currentTetromino)) {
+        //                 stopTetrisGame();
+        //                 alert("미완성 ㅠ-ㅠ");
+        //                 return;
+        //             }
+        //             currentTetromino = getRandomTetromino();
+        //             currentX = Math.floor(canvasWidth / 2) - Math.floor(currentTetromino[0].length / 2);
+        //             currentY = 0;
+        //         }
+
+        //         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //         drawGrid();
+        //         drawTetromino();
+        //     }
+
+        //     function moveTetromino(direction) {
+        //         const newX = currentX + direction;
+        //         if (!checkCollision(newX, currentY, currentTetromino)) {
+        //             currentX = newX;
+        //         }
+        //     }
+
+        //     function rotateCurrentTetromino() {
+        //         const rotatedTetromino = rotateTetromino();
+        //         if (!checkCollision(currentX, currentY, rotatedTetromino)) {
+        //             currentTetromino = rotatedTetromino;
+        //         }
+        //     }
+
+        //     document.addEventListener("keydown", event => {
+        //         switch (event.code) {
+        //             case "ArrowLeft":
+        //                 moveTetromino(-1);
+        //                 break;
+        //             case "ArrowRight":
+        //                 moveTetromino(1);
+        //                 break;
+        //             case "ArrowDown":
+        //                 updateGame();
+        //                 break;
+        //             case "ArrowUp":
+        //                 rotateCurrentTetromino();
+        //                 break;
+        //         }
+        //     });
+
+        //     initializeGame();
+        // }
+
+        // startTetrisGame();
+    </script>
+
+</head>
+
+<body>
+    <div id="col1-overlay" class="modal-overlay">
+        <div id="col1" class="intro-container">
+
+            <img class="intro-image"
+                src="https://velog.velcdn.com/images/heelieben/post/675309bf-a0a3-4443-8ced-8a55ce40ce08/image.png"
+                alt="Your Photo">
+            <p> @@@///11조 개발자가 될수있다 !! 아자아자 !!///@@@</p>
+            <button class="game-button" onclick="startGame()"> 지렁이 게임 </button> <button class="game-button2"
+                onclick="startTetrisGame()"> 테트리스 </button>
+            <div class="intro-details">
+
+                <span class="intro-close" onclick="closeIntro1()">X</span>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!--모달 창 코드 -->
+    <div>
+        
+
+        <div class="door">
+            <!-- 대문 이미지 -->
+            <!-- 각번호로 호출가능 modal1('col1'), modal2() -->
+            <img onclick="modal1('col1')"
+                src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbDM4Lh%2FbtsiOKznm2t%2Fry7hmah1aWbP1AV0n9wPMK%2Fimg.png"
+                width="500" height="500" class="image" alt="11조" />
+
+            <!-- ENTER 버튼 -->
+            <button><a class= "mainEnter" href= '/main' style="text-decoration:none ;">ENTER</a></button>
+
+            <!-- EXIT 버튼 -->
+            <button onclick="exit()">EXIT</button>
+
+            <!-- 게더 이미지 -->
+            <img onclick="playGather()"
+                src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FniMzj%2Fbtsi11sCml9%2FCM3sFK6AoFASCLzbrzpQfK%2Fimg.png"
+                width="500" height="500" class="image2" alt="11조" />
+
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
