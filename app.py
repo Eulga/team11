@@ -4,8 +4,7 @@ app = Flask(__name__)
 
 from pymongo import MongoClient
 
-client = MongoClient('mongodb+srv://Sparta:test@cluster0.90mpqge.mongodb.net/?retryWrites=true&w=majority')
-# client = MongoClient('mongodb+srv://sparta:test@cluster0.r2nnoby.mongodb.net/?retryWrites=true&w=majority')
+#client = MongoClient('')본인의 db를 연결 하세요
 db = client.dbsparta
 
 import uuid
