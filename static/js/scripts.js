@@ -58,7 +58,7 @@ $(document).ready(function () {
 });
 
 // 방명록 조회 후 화면 출력
-function show_guestbook() {
+function show_guestbook() {/*
     $('#comment-list').empty()
     let count = 0
     setInterval(() => {
@@ -80,7 +80,7 @@ function show_guestbook() {
                     count = rows.length
                 }
             })
-    }, 1000)
+    }, 1000)*/
 }
 
 // 방명록 생성

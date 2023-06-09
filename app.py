@@ -22,11 +22,10 @@ import tools
 def home():
     return render_template('index.html')
 
+
 @app.route('/main')
 def gomain():
     return render_template('indexmain.html')
-
-
 
 
 # 자기소개 텍스트 정보 불러오기
@@ -124,235 +123,266 @@ def test():
 
     return jsonify({'user': user})
 
+
 # 개인 페이지 - 박영준님
 @app.route('/yeongjun')
 def yeongjun():
     return render_template('yeongjun.html')
 
+
 # 오늘의 목표 추가 버튼 - 박영준님
 @app.route("/yeongjun/bucket", methods=["POST"])
 def yeongjun_bucket_post():
-    bucket_receive = request.form['bucket_give']        
-    bucket_list = list(db.yeongjun.find({}, {'_id': False}))      
-    count = len(bucket_list) + 1 
+    bucket_receive = request.form['bucket_give']
+    bucket_list = list(db.yeongjun.find({}, {'_id': False}))
+    count = len(bucket_list) + 1
 
-    doc = {                         
-        'num':count,
-        'bucket':bucket_receive,
-        'done': 0   
+    doc = {
+        'num': count,
+        'bucket': bucket_receive,
+        'done': 0
     }
-    db.yeongjun.insert_one(doc)           
+    db.yeongjun.insert_one(doc)
     return jsonify({'msg': '저장 완료!'})
+
 
 @app.route("/yeongjun/bucket", methods=["GET"])
 def yeongjun_bucket_get():
-    all_buckets = list(db.yeongjun.find({},{'_id':False}))
+    all_buckets = list(db.yeongjun.find({}, {'_id': False}))
     return jsonify({'result': all_buckets})
+
 
 # 완료 버튼 - 박영준님
 @app.route("/yeongjun/bucket/done", methods=["POST"])
 def yeongjun_bucket_done():
-    num_receive = request.form['num_give']          
-    db.yeongjun.update_one({'num': int(num_receive)}, {'$set': {'done': 1}}) 
+    num_receive = request.form['num_give']
+    db.yeongjun.update_one({'num': int(num_receive)}, {'$set': {'done': 1}})
     return jsonify({'msg': '완료!'})
+
 
 # 취소 버튼 - 박영준님
 @app.route("/yeongjun/bucket/reset", methods=["POST"])
 def yeongjun_bucket_reset():
-    num_receive = request.form['num_give']          
-    db.yeongjun.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})          
+    num_receive = request.form['num_give']
+    db.yeongjun.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
     return jsonify({'msg': '취소!'})
+
 
 # 삭제 버튼 - 박영준님
 @app.route("/yeongjun/bucket/delete", methods=["POST"])
 def yeongjun_delete_post():
     delete_receive = request.form['delete_give']
     db.yeongjun.delete_one({'num': int(delete_receive)})
-    return jsonify({'result': 'success','msg':'삭제 완료!'})
+    return jsonify({'result': 'success', 'msg': '삭제 완료!'})
 
- # 개인 페이지 - 유시환님
+
+# 개인 페이지 - 유시환님
 @app.route('/sihwan')
 def sihwan():
     return render_template('sihwan.html')
 
+
 # 오늘의 목표 추가 버튼 - 유시환님
 @app.route("/sihwan/bucket", methods=["POST"])
 def sihwan_bucket_post():
-    bucket_receive = request.form['bucket_give']        
-    bucket_list = list(db.sihwan.find({}, {'_id': False}))      
-    count = len(bucket_list) + 1 
+    bucket_receive = request.form['bucket_give']
+    bucket_list = list(db.sihwan.find({}, {'_id': False}))
+    count = len(bucket_list) + 1
 
-    doc = {                         
-        'num':count,
-        'bucket':bucket_receive,
-        'done': 0   
+    doc = {
+        'num': count,
+        'bucket': bucket_receive,
+        'done': 0
     }
-    db.sihwan.insert_one(doc)           
+    db.sihwan.insert_one(doc)
     return jsonify({'msg': '저장 완료!'})
+
 
 @app.route("/sihwan/bucket", methods=["GET"])
 def sihwan_bucket_get():
-    all_buckets = list(db.sihwan.find({},{'_id':False}))
+    all_buckets = list(db.sihwan.find({}, {'_id': False}))
     return jsonify({'result': all_buckets})
+
 
 # 완료 버튼 - 유시환님
 @app.route("/sihwan/bucket/done", methods=["POST"])
 def sihwan_bucket_done():
-    num_receive = request.form['num_give']          
-    db.sihwan.update_one({'num': int(num_receive)}, {'$set': {'done': 1}}) 
+    num_receive = request.form['num_give']
+    db.sihwan.update_one({'num': int(num_receive)}, {'$set': {'done': 1}})
     return jsonify({'msg': '완료!'})
+
 
 # 취소 버튼 - 유시환님
 @app.route("/sihwan/bucket/reset", methods=["POST"])
 def sihwan_bucket_reset():
-    num_receive = request.form['num_give']          
-    db.sihwan.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})          
+    num_receive = request.form['num_give']
+    db.sihwan.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
     return jsonify({'msg': '취소!'})
+
 
 # 삭제 버튼 - 유시환님
 @app.route("/sihwan/bucket/delete", methods=["POST"])
 def sihwan_delete_post():
     delete_receive = request.form['delete_give']
     db.sihwan.delete_one({'num': int(delete_receive)})
-    return jsonify({'result': 'success','msg':'삭제 완료!'})
+    return jsonify({'result': 'success', 'msg': '삭제 완료!'})
+
 
 # 개인 페이지 - 김광균님
 @app.route('/gwanggyun')
 def gwanggyun():
     return render_template('gwanggyun.html')
 
+
 # 오늘의 목표 추가 버튼 - 김광균님
 @app.route("/gwanggyun/bucket", methods=["POST"])
 def gwanggyun_bucket_post():
-    bucket_receive = request.form['bucket_give']        
-    bucket_list = list(db.gwanggyun.find({}, {'_id': False}))      
-    count = len(bucket_list) + 1 
+    bucket_receive = request.form['bucket_give']
+    bucket_list = list(db.gwanggyun.find({}, {'_id': False}))
+    count = len(bucket_list) + 1
 
-    doc = {                         
-        'num':count,
-        'bucket':bucket_receive,
-        'done': 0   
+    doc = {
+        'num': count,
+        'bucket': bucket_receive,
+        'done': 0
     }
-    db.gwanggyun.insert_one(doc)           
+    db.gwanggyun.insert_one(doc)
     return jsonify({'msg': '저장 완료!'})
+
 
 @app.route("/gwanggyun/bucket", methods=["GET"])
 def gwanggyun_bucket_get():
-    all_buckets = list(db.gwanggyun.find({},{'_id':False}))
+    all_buckets = list(db.gwanggyun.find({}, {'_id': False}))
     return jsonify({'result': all_buckets})
+
 
 # 완료 버튼 - 김광균님
 @app.route("/gwanggyun/bucket/done", methods=["POST"])
 def gwanggyun_bucket_done():
-    num_receive = request.form['num_give']          
-    db.gwanggyun.update_one({'num': int(num_receive)}, {'$set': {'done': 1}}) 
+    num_receive = request.form['num_give']
+    db.gwanggyun.update_one({'num': int(num_receive)}, {'$set': {'done': 1}})
     return jsonify({'msg': '완료!'})
+
 
 # 취소 버튼 - 김광균님
 @app.route("/gwanggyun/bucket/reset", methods=["POST"])
 def gwanggyun_bucket_reset():
-    num_receive = request.form['num_give']          
-    db.gwanggyun.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})          
+    num_receive = request.form['num_give']
+    db.gwanggyun.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
     return jsonify({'msg': '취소!'})
+
 
 # 삭제 버튼 - 김광균님
 @app.route("/gwanggyun/bucket/delete", methods=["POST"])
 def gwanggyun_delete_post():
     delete_receive = request.form['delete_give']
     db.gwanggyun.delete_one({'num': int(delete_receive)})
-    return jsonify({'result': 'success','msg':'삭제 완료!'})
+    return jsonify({'result': 'success', 'msg': '삭제 완료!'})
+
 
 # 개인 페이지 - 김재익님
-@app.route('/jaeig')
-def jaeig():
-    return render_template('jaeig.html')
+@app.route('/jaeik')
+def jaeik():
+    return render_template('jaeik.html')
+
 
 # 오늘의 목표 추가 버튼 - 김재익님
-@app.route("/jaeig/bucket", methods=["POST"])
-def jaeig_bucket_post():
-    bucket_receive = request.form['bucket_give']        
-    bucket_list = list(db.jaeig.find({}, {'_id': False}))      
-    count = len(bucket_list) + 1 
+@app.route("/jaeik/bucket", methods=["POST"])
+def jaeik_bucket_post():
+    bucket_receive = request.form['bucket_give']
+    bucket_list = list(db.jaeik.find({}, {'_id': False}))
+    count = len(bucket_list) + 1
 
-    doc = {                         
-        'num':count,
-        'bucket':bucket_receive,
-        'done': 0   
+    doc = {
+        'num': count,
+        'bucket': bucket_receive,
+        'done': 0
     }
-    db.jaeig.insert_one(doc)           
+    db.jaeik.insert_one(doc)
     return jsonify({'msg': '저장 완료!'})
 
-@app.route("/jaeig/bucket", methods=["GET"])
-def jaeig_bucket_get():
-    all_buckets = list(db.jaeig.find({},{'_id':False}))
+
+@app.route("/jaeik/bucket", methods=["GET"])
+def jaeik_bucket_get():
+    all_buckets = list(db.jaeik.find({}, {'_id': False}))
     return jsonify({'result': all_buckets})
 
+
 # 완료 버튼 - 김재익님
-@app.route("/jaeig/bucket/done", methods=["POST"])
-def jaeig_bucket_done():
-    num_receive = request.form['num_give']          
-    db.jaeig.update_one({'num': int(num_receive)}, {'$set': {'done': 1}}) 
+@app.route("/jaeik/bucket/done", methods=["POST"])
+def jaeik_bucket_done():
+    num_receive = request.form['num_give']
+    db.jaeik.update_one({'num': int(num_receive)}, {'$set': {'done': 1}})
     return jsonify({'msg': '완료!'})
 
+
 # 취소 버튼 - 김재익님
-@app.route("/jaeig/bucket/reset", methods=["POST"])
-def jaeig_bucket_reset():
-    num_receive = request.form['num_give']          
-    db.jaeig.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})          
+@app.route("/jaeik/bucket/reset", methods=["POST"])
+def jaeik_bucket_reset():
+    num_receive = request.form['num_give']
+    db.jaeik.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
     return jsonify({'msg': '취소!'})
 
+
 # 삭제 버튼 - 김재익님
-@app.route("/jaeig/bucket/delete", methods=["POST"])
-def jaeig_delete_post():
+@app.route("/jaeik/bucket/delete", methods=["POST"])
+def jaeik_delete_post():
     delete_receive = request.form['delete_give']
-    db.jaeig.delete_one({'num': int(delete_receive)})
-    return jsonify({'result': 'success','msg':'삭제 완료!'})
+    db.jaeik.delete_one({'num': int(delete_receive)})
+    return jsonify({'result': 'success', 'msg': '삭제 완료!'})
+
 
 # 개인 페이지 - 이명현님
 @app.route('/myeonghyeon')
 def myeonghyeon():
     return render_template('myeonghyeon.html')
 
+
 # 오늘의 목표 추가 버튼 - 이명현님
 @app.route("/myeonghyeon/bucket", methods=["POST"])
 def myeonghyeon_bucket_post():
-    bucket_receive = request.form['bucket_give']        
-    bucket_list = list(db.myeonghyeon.find({}, {'_id': False}))      
-    count = len(bucket_list) + 1 
+    bucket_receive = request.form['bucket_give']
+    bucket_list = list(db.myeonghyeon.find({}, {'_id': False}))
+    count = len(bucket_list) + 1
 
-    doc = {                         
-        'num':count,
-        'bucket':bucket_receive,
-        'done': 0   
+    doc = {
+        'num': count,
+        'bucket': bucket_receive,
+        'done': 0
     }
-    db.myeonghyeon.insert_one(doc)           
+    db.myeonghyeon.insert_one(doc)
     return jsonify({'msg': '저장 완료!'})
+
 
 @app.route("/myeonghyeon/bucket", methods=["GET"])
 def myeonghyeon_bucket_get():
-    all_buckets = list(db.myeonghyeon.find({},{'_id':False}))
+    all_buckets = list(db.myeonghyeon.find({}, {'_id': False}))
     return jsonify({'result': all_buckets})
+
 
 # 완료 버튼 - 이명현님
 @app.route("/myeonghyeon/bucket/done", methods=["POST"])
 def myeonghyeon_bucket_done():
-    num_receive = request.form['num_give']          
-    db.myeonghyeon.update_one({'num': int(num_receive)}, {'$set': {'done': 1}}) 
+    num_receive = request.form['num_give']
+    db.myeonghyeon.update_one({'num': int(num_receive)}, {'$set': {'done': 1}})
     return jsonify({'msg': '완료!'})
+
 
 # 취소 버튼 - 이명현님
 @app.route("/myeonghyeon/bucket/reset", methods=["POST"])
 def myeonghyeon_bucket_reset():
-    num_receive = request.form['num_give']          
-    db.myeonghyeon.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})          
+    num_receive = request.form['num_give']
+    db.myeonghyeon.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
     return jsonify({'msg': '취소!'})
+
 
 # 삭제 버튼 - 이명현님
 @app.route("/myeonghyeon/bucket/delete", methods=["POST"])
 def myeonghyeon_delete_post():
     delete_receive = request.form['delete_give']
     db.myeonghyeon.delete_one({'num': int(delete_receive)})
-    return jsonify({'result': 'success','msg':'삭제 완료!'})
+    return jsonify({'result': 'success', 'msg': '삭제 완료!'})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5001, debug=True)

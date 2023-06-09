@@ -318,15 +318,23 @@
       </div>
     </div>
     <div class="mybox" id="comment-list">
-      <li>
-        <h2>안녕하세요<span id="completion-status"></span></h2>
-        <p>
-          <input id="name" class="form-control" type="text" placeholder="이름" />
-          <input id="pw" class="form-control" type="text" placeholder="비밀번호" />
-          <button onclick="update_guestbook()" type="button" class="btn btn-outline-primary">수정</button>
-          <button onclick="delete_guestbook()" type="button" class="btn btn-outline-primary">삭제</button>
-        </p>
-      </li>
+      <div id="${own_uuid}">
+        <p>이름</p>
+        <p class="guestbook">방명록내용</p>
+        <div id="edit-guestbook-${own_uuid}" style="display: none">
+          <input id="edit-guestbook-text-${own_uuid}" type="text" />
+          <input id="edit-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호"/>
+          <button onclick="modify_guestbook('${own_uuid}')" type="button" class="btn btn-primary">저장</button>
+          <button onclick="cancel_edit('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
+        </div>
+        <button onclick="edit_guestbook('${own_uuid}', '${guestbook}')" type="button" class="btn btn-primary">수정</button>
+        <button onclick="check_delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">삭제</button>
+        <div id="delete-guestbook-${own_uuid}" style="display: none">
+          <input id="delete-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호"/>
+          <button onclick="delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">확인</button>
+          <button onclick="cancel_delete('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
+        </div>
+      </div>
     </div>
   </section>
 
