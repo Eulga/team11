@@ -15,7 +15,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet" />
 
-    <title>jaeig 소개 및 목표</title>
+    <title>jaeik 소개 및 목표</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
@@ -178,7 +178,7 @@
             show_bucket();
         });
         function show_bucket() {
-            fetch('/jaeig/bucket').then(res => res.json()).then(data => {
+            fetch('/jaeik/bucket').then(res => res.json()).then(data => {
                 let rows = data['result']
                 $('#bucket-list').empty()
 
@@ -212,7 +212,7 @@
             let formData = new FormData();
             formData.append("bucket_give", bucket);
 
-            fetch('/jaeig/bucket', { method: "POST", body: formData, }).then((response) => response.json()).then((data) => {
+            fetch('/jaeik/bucket', { method: "POST", body: formData, }).then((response) => response.json()).then((data) => {
                 alert(data["msg"])
                 window.location.reload()
             });
@@ -224,7 +224,7 @@
             let formData = new FormData();
             formData.append("num_give", num);
 
-            fetch('/jaeig/bucket/done', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
+            fetch('/jaeik/bucket/done', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
                 alert(data["msg"])
                 window.location.reload()
             });
@@ -236,7 +236,7 @@
             let formData = new FormData();
             formData.append("num_give", num);
 
-            fetch('/jaeig/bucket/reset', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
+            fetch('/jaeik/bucket/reset', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
                 alert(data["msg"])
                 window.location.reload()
             });
@@ -248,7 +248,7 @@
             let formData = new FormData();
             formData.append("delete_give", num);
 
-            fetch('/jaeig/bucket/delete', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
+            fetch('/jaeik/bucket/delete', { method: "POST", body: formData }).then((response) => response.json()).then((data) => {
                 alert(data["msg"])
                 window.location.reload()
             });

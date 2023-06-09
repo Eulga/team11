@@ -19,7 +19,8 @@
   <script src="{{ url_for('static', filename='js/scripts.js') }}"> </script>
 
   <style>
-    .buketEnter{
+     @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+    .buketEnter {
       width: 150px;
       height: 50px;
       background-color: transparent;
@@ -30,6 +31,7 @@
       font-size: 20px;
 
     }
+
     .info {
       width: 150px;
       height: 50px;
@@ -40,6 +42,7 @@
       margin-top: 10px;
       font-size: 20px;
     }
+
     .info:hover {
       font-size: 30px;
       border: 1px white;
@@ -72,7 +75,7 @@
     .intro-container {
       background-color: #fff3ed;
       position: relative;
-      margin: 20px auto 20px auto;
+      margin: 10px auto 10px auto;
       padding: 20px 20px 20px 20px;
       width: 700px;
       height: 1000px;
@@ -81,20 +84,23 @@
       box-shadow: 0 0 5px rgba(255, 142, 56, 0.2);
       font-size: 30px;
       color: rgb(227, 117, 6);
-      margin-top: 20px;
+      
       border-radius: 50px;
+      font-family: 'Nanum Pen Script', cursive;
     }
 
     .intro-image {
       width: 600px;
-      height: 300px;
+      height: 400px;
       border-radius: 50px;
       margin-bottom: 10px;
       border: 5px solid #ff9f4c;
+     
+      
     }
 
     .intro-details {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     .intro-details p {
@@ -114,21 +120,49 @@
       color: rgb(255, 252, 252);
       font-size: 50px;
     }
+
     .blog-link {
-            display: inline-block;
-            padding: 8px 16px;
-            margin-top: 20px;
-            background-color: #FF9F4C;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 20px;
-            transition: background-color 0.3s;
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.0.5);
-        }
-        .blog-link:hover {
-            background-color: #FFAF81;
-            color: white;
-        }
+      display: inline-block;
+      padding: 8px 16px;
+      margin-top: 20px;
+      background-color: #FF9F4C;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: background-color 0.3s;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.0.5);
+    }
+
+    .blog-link:hover {
+      background-color: #FFAF81;
+      color: white;
+    }
+
+    .small-name {
+      width: 100px;
+      height: 50px;
+      background-color: transparent;
+      border: 3px solid rgb(255, 179, 124);
+      color: gray;
+      border-radius: 15px;
+      margin-top: 10px;
+      font-size: 30px;
+      font-family: 'Nanum Pen Script', cursive;
+      text-align: center;
+    }
+
+    .small-text {
+      width: auto;
+      height: 50px;
+      background-color: transparent;
+      border: 3px solid rgb(255, 179, 124);
+      color: gray;
+      border-radius: 15px;
+      
+      font-size: 30px;
+      font-family: 'Nanum Pen Script', cursive;
+      text-align: left;
+    }
   </style>
 </head>
 
@@ -253,7 +287,7 @@
             <h4>BackEnd 유시환</h4>
             <p class="text-muted">메인 페이지 제작 및 디자인 수정</p>
             <button class="info" onclick="modal4('col4')">더 알아보기</button>
-            <button class="info" onclick = "location.href = '/sihwan' ">목표는?</button>
+            <button class="info" onclick="location.href = '/sihwan' ">목표는?</button>
           </div>
         </div>
         <div class="col-lg-4">
@@ -262,7 +296,7 @@
             <h4>BackEnd 김광균</h4>
             <p class="text-muted">대문, 자기소개 카드, 모달창 생성, 미니게임 및 디자인 수정</p>
             <button class="info" onclick="modal1('col1')">더 알아보기</button>
-            <button class="info" onclick = "location.href = '/gwanggyun' ">목표는?</button>
+            <button class="info" onclick="location.href = '/gwanggyun' ">목표는?</button>
           </div>
         </div>
         <div class="col-lg-4">
@@ -271,7 +305,7 @@
             <h4>BackEnd 김재익</h4>
             <p class="text-muted">방명록,CRUD,실시간 화면 업데이트,비밀번호 부여,비밀번호 암호화저장</p>
             <button class="info" onclick="modal2('col2')">더 알아보기</button>
-            <button class="info" onclick = "location.href = '/jaeig' ">목표는?</button>
+            <button class="info" onclick="location.href = '/jaeik' ">목표는?</button>
           </div>
         </div>
         <div class="col-lg-4">
@@ -280,7 +314,7 @@
             <h4>BackEnd 박영준</h4>
             <p class="text-muted">자기 소개글,오늘의 목표 추가, 완료/취소, 삭제 버튼</p>
             <button class="info" onclick="modal5('col5')">더 알아보기</button>
-            <button class="info" onclick = "location.href = '/yeongjun' ">목표는?</button>
+            <button class="info" onclick="location.href = '/yeongjun' ">목표는?</button>
           </div>
         </div>
         <div class="col-lg-4">
@@ -289,16 +323,18 @@
             <h4>BackEnd 이명헌</h4>
             <p class="text-muted">각 기능 조합 및 배포</p>
             <button class="info" onclick="modal3('col3')">더 알아보기</button>
-            <button class="info" onclick = "location.href = '/myeonghyeon' ">목표는?</button>
+            <button class="info" onclick="location.href = '/myeonghyeon' ">목표는?</button>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="team-member">
-            <img class="mx-auto rounded-circle" src="https://media.istockphoto.com/id/1150131921/ko/%EB%B2%A1%ED%84%B0/%EC%83%9D%EA%B0%81-%EA%B5%90%EC%8B%A4-%ED%95%99%EA%B5%90-%EC%95%84%EC%9D%B4%EC%BD%98-%EA%B5%90%EC%9C%A1-%ED%94%BD%ED%86%A0%EA%B7%B8%EB%9E%A8-%EC%95%84%EC%9D%B4%EC%BD%98%EC%9D%98-%EC%9A%94%EC%86%8C%EC%9E%85%EB%8B%88%EB%8B%A4-%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84-%ED%92%88%EC%A7%88%EC%9D%98-%EA%B7%B8%EB%9E%98%ED%94%BD-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%95%84%EC%9D%B4%EC%BD%98%EC%9E%85%EB%8B%88%EB%8B%A4-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%9B%B9-%EB%94%94%EC%9E%90%EC%9D%B8%EC%97%90-%EB%8C%80-%ED%95%9C-%ED%91%9C%EC%A7%80%ED%8C%90-%EB%B0%8F-%EA%B8%B0%ED%98%B8-%EC%BB%AC%EB%A0%89%EC%85%98-%EC%95%84%EC%9D%B4%EC%BD%98.jpg?s=170x170&k=20&c=SiSZWkCe7dyWZvssh1oShl84mgBj9ofIiJvt8rV5tog=" alt="..." />
+            <img class="mx-auto rounded-circle"
+              src="https://media.istockphoto.com/id/1150131921/ko/%EB%B2%A1%ED%84%B0/%EC%83%9D%EA%B0%81-%EA%B5%90%EC%8B%A4-%ED%95%99%EA%B5%90-%EC%95%84%EC%9D%B4%EC%BD%98-%EA%B5%90%EC%9C%A1-%ED%94%BD%ED%86%A0%EA%B7%B8%EB%9E%A8-%EC%95%84%EC%9D%B4%EC%BD%98%EC%9D%98-%EC%9A%94%EC%86%8C%EC%9E%85%EB%8B%88%EB%8B%A4-%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84-%ED%92%88%EC%A7%88%EC%9D%98-%EA%B7%B8%EB%9E%98%ED%94%BD-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%95%84%EC%9D%B4%EC%BD%98%EC%9E%85%EB%8B%88%EB%8B%A4-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%9B%B9-%EB%94%94%EC%9E%90%EC%9D%B8%EC%97%90-%EB%8C%80-%ED%95%9C-%ED%91%9C%EC%A7%80%ED%8C%90-%EB%B0%8F-%EA%B8%B0%ED%98%B8-%EC%BB%AC%EB%A0%89%EC%85%98-%EC%95%84%EC%9D%B4%EC%BD%98.jpg?s=170x170&k=20&c=SiSZWkCe7dyWZvssh1oShl84mgBj9ofIiJvt8rV5tog="
+              alt="..." />
             <h4>FrontEnd 홍길동</h4>
             <p class="text-muted">없음</p>
             <button class="info" onclick="">더 알아보기</button>
-            <button class="info" onclick = "location.href = '' ">목표는?</button>
+            <button class="info" onclick="location.href = '' ">목표는?</button>
           </div>
         </div>
       </div>
@@ -319,18 +355,19 @@
     </div>
     <div class="mybox" id="comment-list">
       <div id="${own_uuid}">
-        <p>이름</p>
-        <p class="guestbook">방명록내용</p>
+        <p class="small-name">이름</p>
+        <p class="small-text">방명록내용</p>
         <div id="edit-guestbook-${own_uuid}" style="display: none">
           <input id="edit-guestbook-text-${own_uuid}" type="text" />
-          <input id="edit-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호"/>
+          <input id="edit-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호" />
           <button onclick="modify_guestbook('${own_uuid}')" type="button" class="btn btn-primary">저장</button>
           <button onclick="cancel_edit('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
         </div>
-        <button onclick="edit_guestbook('${own_uuid}', '${guestbook}')" type="button" class="btn btn-primary">수정</button>
+        <button onclick="edit_guestbook('${own_uuid}', '${guestbook}')" type="button"
+          class="btn btn-primary">수정</button>
         <button onclick="check_delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">삭제</button>
         <div id="delete-guestbook-${own_uuid}" style="display: none">
-          <input id="delete-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호"/>
+          <input id="delete-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호" />
           <button onclick="delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">확인</button>
           <button onclick="cancel_delete('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
         </div>

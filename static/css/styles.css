@@ -13176,7 +13176,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   padding: 20px;
   box-shadow: 0px 0px 10px 0px lightblue;
   margin: 20px auto;
-  border-radius: 80px;
+  border-radius: 50px;
   border-color: orange;
   border: 8px solid orange;
 
@@ -13191,7 +13191,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   max-width: 1000px;
   padding: 20px;
   margin: 20px auto;
-  border-radius: 50px;
+  border-radius: 20px; 
 }
 
 
@@ -13202,6 +13202,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   box-shadow: 0px 0px 10px 0px lightblue;
   margin: 20px auto;
   border: 8px solid orange;
+  
 }
 
 .information>input {
@@ -13213,6 +13214,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   margin: 20px auto;
   border: 8px solid orange;
   border-radius: 20px;
+  
 }
 
 
