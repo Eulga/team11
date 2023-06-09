@@ -4,8 +4,8 @@ app = Flask(__name__)
 
 from pymongo import MongoClient
 
-# client = MongoClient('mongodb+srv://Sparta:test@cluster0.90mpqge.mongodb.net/?retryWrites=true&w=majority')
-client = MongoClient('mongodb+srv://sparta:test@cluster0.r2nnoby.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://Sparta:test@cluster0.90mpqge.mongodb.net/?retryWrites=true&w=majority')
+# client = MongoClient('mongodb+srv://sparta:test@cluster0.r2nnoby.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
 
 import uuid
@@ -58,12 +58,16 @@ def guestbook_save():
         'password': pw_hash,
         'uuid': own_uuid
     }
-    db.team11_guestbook.insert_one(doc)
+    try:
+        db.team11_guestbook.insert_one(doc)
+        result = True
+    except:
+        result = False
+
     user = db.team11_guestbook.find_one({'uuid': own_uuid}, {'_id': False, 'password': False})
+    print('방명록 등록: ' + str(user))
 
-    print(user['name'])
-
-    return jsonify({'user': user})
+    return jsonify({'result': result})
 
 
 # 방명록 조회
@@ -115,13 +119,6 @@ def guestbook_delete():
         db.team11_guestbook.delete_one({'uuid': uuid_receive, })
 
     return jsonify({'result': result})
-
-
-@app.route("/test", methods=["GET"])
-def test():
-    user = db.team11_guestbook.find_one({'uuid': '362f74ee-ff9e-432f-8998-8aaa4e2c2fbc'}, {'_id': False})
-
-    return jsonify({'user': user})
 
 
 # 개인 페이지 - 박영준님
