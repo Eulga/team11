@@ -150,7 +150,7 @@ function modify_guestbook(own_uuid) {
             if (result) {
                 let row = response['user']
                 $(`#edit-guestbook-${own_uuid}`).hide();
-                $(`#${own_uuid} > p.guestbook`).text(row['guestbook']).show();
+                $(`#${own_uuid} > p.small-text`).text(row['guestbook']).show();
                 pw.css({'border': '1px solid black'})
             } else {
                 pw.css({'border': '1px solid red'})
@@ -161,7 +161,7 @@ function modify_guestbook(own_uuid) {
 
 // 수정 버튼 누를시 작동
 function edit_guestbook(own_uuid) {
-    let guestbook = $(`#${own_uuid} > p.guestbook`)
+    let guestbook = $(`#${own_uuid} > p.small-text`)
 
     guestbook.hide()
     $(`#edit-guestbook-${own_uuid}`).show();
@@ -171,7 +171,7 @@ function edit_guestbook(own_uuid) {
 // 수정 버튼 후 취소 버튼 누를 시 작동
 function cancel_edit(own_uuid) {
     $(`#edit-guestbook-${own_uuid}`).hide();
-    $(`#${own_uuid} > p.guestbook`).show();
+    $(`#${own_uuid} > p.small-text`).show();
 }
 
 // 방명록 삭제
