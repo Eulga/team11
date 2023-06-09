@@ -36,7 +36,8 @@ window.addEventListener('DOMContentLoaded', event => {
             target: '#mainNav',
             rootMargin: '0px 0px -40%',
         });
-    };
+    }
+    ;
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
@@ -58,7 +59,7 @@ $(document).ready(function () {
 });
 
 // 방명록 조회 후 화면 출력
-function show_guestbook() {/*
+function show_guestbook() {
     $('#comment-list').empty()
     let count = 0
     setInterval(() => {
@@ -80,7 +81,7 @@ function show_guestbook() {/*
                     count = rows.length
                 }
             })
-    }, 1000)*/
+    }, 1000)
 }
 
 // 방명록 생성
@@ -97,13 +98,14 @@ function save_guestbook() {
     fetch("/guestbook_save", {method: "POST", body: formData,})
         .then((res) => res.json())
         .then((response) => {
-            let row = response['user']
-            let name = row['name']
-            let guestbook = row['guestbook']
-            let own_uuid = row['uuid']
+            $('#guestbook').val('')
 
-            // let temp_html = guestbook_shape(name, own_uuid, guestbook)
-            // $('#test-section').prepend(temp_html)
+            let result = response['result']
+            if (result) {
+                console.log("저장 성공")
+            } else {
+                console.warn("저장 실패")
+            }
         });
 
 }
@@ -111,23 +113,23 @@ function save_guestbook() {
 // 방명록 show, save 시 필요한 방명록 모양
 function guestbook_shape(name, own_uuid, guestbook) {
     return `<div id="${own_uuid}">
-                        <p>${name}</p>
-                        <p class="guestbook">${guestbook}</p>
-                        <div id="edit-guestbook-${own_uuid}" style="display: none">
-                            <input id="edit-guestbook-text-${own_uuid}" type="text" />
-                            <input id="edit-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호"/>
-                            <button onclick="modify_guestbook('${own_uuid}')" type="button" class="btn btn-primary">저장</button>
-                            <button onclick="cancel_edit('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
-                        </div>
-                        <button onclick="edit_guestbook('${own_uuid}', '${guestbook}')" type="button" class="btn btn-primary">수정</button>
-                        <button onclick="check_delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">삭제</button>
-                        <div id="delete-guestbook-${own_uuid}" style="display: none">
-                            <input id="delete-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호"/>
-                            <button onclick="delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">확인</button>
-                            <button onclick="cancel_delete('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
-                        </div>
-                    </div>`
-
+        <p class="small-name">${name}</p>
+        <p class="small-text">${guestbook}</p>
+        <div id="edit-guestbook-${own_uuid}" style="display: none">
+          <input id="edit-guestbook-text-${own_uuid}" type="text" />
+          <input id="edit-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호" />
+          <button onclick="modify_guestbook('${own_uuid}')" type="button" class="btn btn-primary">저장</button>
+          <button onclick="cancel_edit('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
+        </div>
+        <button onclick="edit_guestbook('${own_uuid}', '${guestbook}')" type="button"
+          class="btn btn-primary">수정</button>
+        <button onclick="check_delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">삭제</button>
+        <div id="delete-guestbook-${own_uuid}" style="display: none">
+          <input id="delete-guestbook-password-${own_uuid}" type="password" placeholder="비밀번호" />
+          <button onclick="delete_guestbook('${own_uuid}')" type="button" class="btn btn-primary">확인</button>
+          <button onclick="cancel_delete('${own_uuid}')" type="button" class="btn btn-primary">취소</button>
+        </div>
+      </div>`
 }
 
 // 방명록 수정
@@ -183,7 +185,7 @@ function delete_guestbook(own_uuid) {
     fetch("/guestbook_delete", {method: "POST", body: formData,})
         .then(res => res.json())
         .then((response) => {
-            if(response['result']){
+            if (response['result']) {
                 $(`#${own_uuid}`).remove()
             } else {
                 pw.css({'border': '1px solid red'})
@@ -201,48 +203,51 @@ function cancel_delete(own_uuid) {
     $(`#delete-guestbook-${own_uuid}`).hide();
 }
 
-function test1() {
-    fetch("/test").then(res=>res.json()).then(response=>{
-        console.log(response)
-    })
-}
-
 function modal1(col1) {
     var modalOverlay = document.getElementById('col1-overlay');
     modalOverlay.style.display = 'block';
 }
+
 function modal2(col2) {
     var modalOverlay = document.getElementById('col2-overlay');
     modalOverlay.style.display = 'block';
 }
+
 function modal3(col3) {
     var modalOverlay = document.getElementById('col3-overlay');
     modalOverlay.style.display = 'block';
 }
+
 function modal4(col4) {
     var modalOverlay = document.getElementById('col4-overlay');
     modalOverlay.style.display = 'block';
 }
+
 function modal5(col5) {
     var modalOverlay = document.getElementById('col5-overlay');
     modalOverlay.style.display = 'block';
 }
+
 function closeIntro1() {
     var modalOverlay = document.getElementById('col1-overlay');
     modalOverlay.style.display = 'none';
 }
+
 function closeIntro2() {
     var modalOverlay = document.getElementById('col2-overlay');
     modalOverlay.style.display = 'none';
 }
+
 function closeIntro3() {
     var modalOverlay = document.getElementById('col3-overlay');
     modalOverlay.style.display = 'none';
 }
+
 function closeIntro4() {
     var modalOverlay = document.getElementById('col4-overlay');
     modalOverlay.style.display = 'none'
 }
+
 function closeIntro5() {
     var modalOverlay = document.getElementById('col5-overlay');
     modalOverlay.style.display = 'none';
